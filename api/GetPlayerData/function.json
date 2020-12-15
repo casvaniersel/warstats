@@ -8,12 +8,13 @@
       "methods": [
         "get"
       ],
-      "route": "message"
+      "route": "player"
     },
     {
       "type": "http",
       "direction": "out",
       "name": "res"
     }
-  ]
+  ],
+  "scriptFile": "../dist/GetPlayerData/index.js"
 }

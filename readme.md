@@ -1,3 +1,10 @@
-# Vanilla API App
+# Activision Login 
+Om te testen moet je je eigen account gegevens in een .env file opnemen. 
 
-This repo is used as a starter for a _very basic_ web application with an API.
+1. Maak een nieuwe file aan in de root van de `api` folder
+2. Neem onderstaand voorbeeld over en vul je eigen gegevens in
+
+```
+USERNAME=pietjepuk@email.com
+PASSWORD=mypassword
+```

@@ -1,25 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="styles.css" />
-    <title>Vanilla JavaScript App</title>
-  </head>
 
-  <body>
-    <main>
-      <h1>Vanilla JavaScript App</h1>
-      <p>Loading content from the API: <b id="message"></b></b></p>
-    </main>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css" />
+  <title>Vanilla JavaScript App</title>
+</head>
 
-  <script>
-    (async function () {
-      let response = await fetch(`api/message`);
-      let message = await response.json();
+<body>
+  <main>
+    <h1>Vanilla JavaScript App</h1>
+    <p>Loading content from the API: <b id="message"></b></b></p>
+  </main>
+</body>
 
-      document.querySelector("#message").innerHTML = message.text
-    })();
-  </script>
+<script>
+  (async function () {
+    try {
+      let response = await fetch("/api/player?name=c4zler");
+      let data = await response.text();
+      document.querySelector("#message").innerHTML = JSON.stringify(data);
+    } catch (error) {
+      console.log(error);
+    }
+  })();
+</script>
+
 </html>
