@@ -23,9 +23,13 @@ Om te testen moet je je eigen account gegevens in een `local.settings.json` file
 }
 ```
 
-# Deployment
-De structuur van deze solution is gebaseerd op Azure Static Web Apps (Preview). Als je `dev` pusht naar origin en vervolgens daar een Pull Request aanmaakt naar `master` en die goedkeurt, zorgen de Github Actions ervoor dat de site automatische wordt gedeployed naar Azure op url: https://orange-sky-048fbc203.azurestaticapps.net
+# Development
+Neem de volgende zaken in acht
+- Maak een `Feature/Branch` aan voor grotere features
+- Gebruik engelse imperatieve commit messages ("Add file, Update API, Delete file, etc.") 
 
-## Known issues
-### API issue
-Vanuit de Static Web App lukt het niet om de API aan te spreken. Krijg een 500 melding. Moet nog uitzoeken hoe we dat het beste kunnen loggen en debuggen.
+# Deployment
+De structuur van deze solution is gebaseerd op Azure Static Web Apps (Preview). Als je `dev` pusht naar origin en vervolgens daar een Pull Request aanmaakt naar `master` en die goedkeurt, zorgen de Github Actions ervoor dat de site automatische wordt gedeployed naar Azure op url: https://orange-sky-048fbc203.azurestaticapps.net.
+
+## Pull Request
+Zodra je een Pull Request open zet, gaat het build proces ook af en wordt er een staging omgeving aangemaakt. Daar kun je je code testen en vergelijken met productie. Als je daarna je PR goedkeurt, wordt je code gedeployed naar bovenstaande URL.
