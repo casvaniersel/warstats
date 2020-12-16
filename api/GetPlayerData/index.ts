@@ -1,7 +1,6 @@
 import { AzureFunction, Context, HttpRequest } from "@azure/functions";
 import { Welcome } from "../interfaces/IMWBattleRoyaleInformation";
 import API = require("call-of-duty-api");
-import dotenv = require("dotenv");
 
 enum Platform {
     xbl = "xbl",
@@ -13,14 +12,12 @@ enum Platform {
 }
 
 const httpTrigger: AzureFunction = async function (context: Context, req: HttpRequest): Promise<void> {
-    // Get environment settings
-    let env = dotenv.config();
     // Init API
     const _api = API({ platform: "battle" });
 
     // Getting credentials from KeyVault
-    const activisionUserName = env ? env.parsed["USERNAME"] : process.env["ActivisionUserName"];
-    const activisionPassword = env ? env.parsed["PASSWORD"] : process.env["ActivisionPassword"];
+    const activisionUserName = process.env["ActivisionUserName"];
+    const activisionPassword = process.env["ActivisionPassword"];
 
     context.log('HTTP trigger function processed a request.');
     

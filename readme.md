@@ -7,14 +7,20 @@
 We maken gebruik van een wrapper om de officiele Activision API (die niet gedocumenteerd is). https://lierrmm.github.io/capi-docs/#/?id=usage 
 
 ### Activision Login 
-Om te testen moet je je eigen account gegevens in een .env file opnemen. 
+Om te testen moet je je eigen account gegevens in een `local.settings.json` file opnemen. Deze staat al in de .gitignore dus wordt niet gepushed.
 
-1. Maak een nieuwe `.env` file aan in de root van de `api` folder
+1. Maak een nieuwe `local.settings.json` file aan in de root van de `api` folder
 2. Neem onderstaand voorbeeld over en vul je eigen gegevens in
 
 ```
-USERNAME=pietjepuk@email.com
-PASSWORD=mypassword
+{
+  "IsEncrypted": false,
+  "Values": {
+    "FUNCTIONS_WORKER_RUNTIME": "node",
+    "ActivisionUserName": "mijnemail@domein.com",
+    "ActivisionPassword": "mijnwachtwoord"
+  }
+}
 ```
 
 # Deployment
