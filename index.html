@@ -18,7 +18,7 @@
 <script>
   (async function () {
     try {
-      let response = await fetch("/api/player?name=c4zler");
+      let response = await fetch("/api/playerdata?name=c4zler");
       let data = await response.text();
       document.querySelector("#message").innerHTML = JSON.stringify(data);
     } catch (error) {
