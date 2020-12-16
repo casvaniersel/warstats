@@ -3,6 +3,9 @@
 2. `git clone` de `dev` branch van deze repository
 3. Start een terminal en voer `npm i` uit in de `/api` folder
 
+### Activision API
+We maken gebruik van een wrapper om de officiele Activision API (die niet gedocumenteerd is). https://lierrmm.github.io/capi-docs/#/?id=usage 
+
 ### Activision Login 
 Om te testen moet je je eigen account gegevens in een .env file opnemen. 
 
