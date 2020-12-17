@@ -13,7 +13,7 @@
     <h1>Cazler</h1>
     <p>KD: <b id="KdOfC4zler"></b></b></p>
     <h1>Kuubs</h1>
-    <p><b id="matchdataOfKuubs"></b></b></p>
+    <p><b id="matchdataOfC4zler"></b></b></p>
     
   </main>
 </body>
@@ -25,9 +25,9 @@
       let KdOfC4zler = await playerdatac4zlerresponse.text();
       document.querySelector("#KdOfC4zler").innerHTML = JSON.stringify(KdOfC4zler);
 
-      let matchdatakuubsrepsonse = await fetch("/api/matchdataofplayer?name=kuubs");
-      let matchdataOfKuubs = await matchdatakuubsrepsonse.text();
-      document.querySelector("#matchdataOfKuubs").innerHTML = JSON.stringify(matchdataOfKuubs);
+      let matchdatac4zlerrepsonse = await fetch("/api/matchdataofplayer?name=c4zler&from=&to=");
+      let matchdataOfC4zler = await matchdatac4zlerrepsonse.text();
+      document.querySelector("#matchdataOfKuubs").innerHTML = JSON.stringify(matchdataOfC4zler);
     } catch (error) {
       console.log(error);
     }
