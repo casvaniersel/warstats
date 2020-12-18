@@ -10,28 +10,80 @@
 
 <body>
   <main>
-    <h1>Cazler</h1>
-    <p>KD: <b id="KdOfC4zler"></b></b></p>
-    <h1>Kuubs</h1>
-    <p><b id="matchdataOfC4zler"></b></b></p>
-    
+    <h1 id="name"></h1>
+    <p>BR KD: <b id="kd"></b></p>
+    <p>BR Wins: <b id="wins"></b></p>
+    <h1>Laatste match:</h1>
+    <p><b id="lastmatch"></b></p>
   </main>
 </body>
 
 <script>
-  (async function () {
-    try {
-      let playerdatac4zlerresponse = await fetch("/api/playerdata?name=c4zler");
-      let KdOfC4zler = await playerdatac4zlerresponse.text();
-      document.querySelector("#KdOfC4zler").innerHTML = JSON.stringify(KdOfC4zler);
+  (
+    async function () {
+      try {
+        const user = getUserNameFromUrl();
+        setUserName(user)
+        setPlayerDatafor(user)
+        setMatchDataFor(user)
+      } catch (error) {
+        console.log(error);
+      }
+    })();
 
-      let matchdatac4zlerrepsonse = await fetch("/api/matchdataofplayer?name=c4zler&from=1607454000000&to=1608274800000"); // 8 dec from 20:00 to 18 dec 8:00 utc+1
-      let matchdataOfC4zler = await matchdatac4zlerrepsonse.text();
-      document.querySelector("#matchdataOfC4zler").innerHTML = JSON.stringify(matchdataOfC4zler);
-    } catch (error) {
-      console.log(error);
-    }
-  })();
+  async function getPlayerDatafor(user) {
+    let response = await fetch("/api/playerdata?name=" + user);
+    let playerdata = JSON.parse(await response.text());
+    return playerdata;
+  }
+
+  async function getMatchDataFor(user) {
+    let response = await fetch("/api/matchdataofplayer?name=" + user);
+    let matchdata = JSON.parse(await response.text());
+    return matchdata;
+  }
+
+  async function setMatchDataFor(user) {
+    let data = await getMatchDataFor(user);
+    let lastmatch = data.matches[0];
+    document.querySelector("#lastmatch").innerHTML =
+      '<div style="display:block">MatchId: ' + lastmatch.matchID + '<br>'
+      + 'Date Time: ' + formatDate(epochTimestampToJavascriptDate(lastmatch.utcStartSeconds)) + '<br>'
+      + 'Player: ' + lastmatch.player.username + '<br>'
+      + 'Kills: ' + lastmatch.playerStats.kills + '<br>'
+      + 'Placement: ' + lastmatch.playerStats.teamPlacement + '</div>'
+  }
+
+  async function setPlayerDatafor(user) {
+    let playerdata = await getPlayerDatafor(user);
+    console.log(playerdata);
+    document.querySelector("#kd").innerHTML = playerdata.br.kdRatio;
+    document.querySelector("#wins").innerHTML = playerdata.br.wins;
+  }
+
+  function setUserName(user) {
+    document.querySelector("#name").innerHTML = user.toUpperCase();
+  }
+
+  function getUserNameFromUrl() {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get('user');
+  }
+
+  function epochTimestampToJavascriptDate(timestampInMillisecond) {
+    return new Date(millisecondsToSeconds(timestampInMillisecond));
+  }
+
+  function millisecondsToSeconds(milliseconds) {
+    let seconds = milliseconds * 1000;
+    return seconds;
+  }
+
+  function formatDate(date) {
+    let dateFormatted = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate() + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+    return dateFormatted;
+  }
+
 </script>
 
 </html>

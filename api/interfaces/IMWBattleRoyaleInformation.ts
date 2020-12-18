@@ -1,4 +1,4 @@
-export interface Welcome {
+export interface IMWBattleRoyaleInformation {
     br:     Br;
     br_dmz: Br;
     br_all: Br;

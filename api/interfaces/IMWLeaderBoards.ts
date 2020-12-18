@@ -1,4 +1,4 @@
-export interface Welcome {
+export interface IMWLeaderBoards {
     title:            string;
     platform:         string;
     leaderboardType:  string;

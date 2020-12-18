@@ -1,19 +1,11 @@
 import { AzureFunction, Context, HttpRequest } from "@azure/functions";
-import { Welcome } from "../interfaces/IMWBattleRoyaleInformation";
+import { IMWBattleRoyaleInformation } from "../interfaces/IMWBattleRoyaleInformation";
 import API = require("call-of-duty-api");
-
-enum Platform {
-    xbl = "xbl",
-    psn = "psn",
-    steam = "steam",
-    battle = "battle",
-    acti = "acti",
-    uno = "uno"
-}
+import Platform from "../Platform";
 
 const httpTrigger: AzureFunction = async function (context: Context, req: HttpRequest): Promise<void> {
     // Init API
-    const _api = API({ platform: "battle" });
+    const _api = API();
 
     // Getting credentials from KeyVault
     const activisionUserName = process.env["ActivisionUserName"];
@@ -32,19 +24,11 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
         await _api.login(activisionUserName, activisionPassword);
 
         // Get Data
-        let data: Welcome = await _api.MWBattleData(name, platform);
-
-        // Get KD
-        let kd = data.br_all.kdRatio;
-
-        // Output
-        const responseMessage = name
-            ? "Hello, " + name + ". Your K/D ratio is " + kd
-            : "Pass username as Query to see your K/D ratio";
+        let data: IMWBattleRoyaleInformation = await _api.MWBattleData(name, platform);
 
         context.res = {
             // status: 200, /* Defaults to 200 */
-            body: responseMessage
+            body: data
         };
     } catch (Error) {
         context.log("Login failed.");
