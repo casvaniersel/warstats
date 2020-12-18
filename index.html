@@ -5,22 +5,29 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="styles.css" />
-  <title>Vanilla JavaScript App</title>
+  <title>WarStats</title>
 </head>
 
 <body>
   <main>
-    <h1>Vanilla JavaScript App</h1>
-    <p>Loading content from the API: <b id="message"></b></b></p>
+    <h1>Cazler</h1>
+    <p>KD: <b id="KdOfC4zler"></b></b></p>
+    <h1>Kuubs</h1>
+    <p><b id="matchdataOfC4zler"></b></b></p>
+    
   </main>
 </body>
 
 <script>
   (async function () {
     try {
-      let response = await fetch("/api/playerdata?name=c4zler");
-      let data = await response.text();
-      document.querySelector("#message").innerHTML = JSON.stringify(data);
+      let playerdatac4zlerresponse = await fetch("/api/playerdata?name=c4zler");
+      let KdOfC4zler = await playerdatac4zlerresponse.text();
+      document.querySelector("#KdOfC4zler").innerHTML = JSON.stringify(KdOfC4zler);
+
+      let matchdatac4zlerrepsonse = await fetch("/api/matchdataofplayer?name=c4zler&from=1607454000000&to=1608274800000"); // 8 dec from 20:00 to 18 dec 8:00 utc+1
+      let matchdataOfC4zler = await matchdatac4zlerrepsonse.text();
+      document.querySelector("#matchdataOfC4zler").innerHTML = JSON.stringify(matchdataOfC4zler);
     } catch (error) {
       console.log(error);
     }
