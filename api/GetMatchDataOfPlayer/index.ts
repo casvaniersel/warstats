@@ -13,7 +13,7 @@ enum Platform {
 
 const httpTrigger: AzureFunction = async function (context: Context, req: HttpRequest): Promise<void> {
     // Init API
-    const _api = API();
+    const _api = API({ platform: "battle" });
 
     // Getting credentials from KeyVault
     const activisionUserName = process.env["ActivisionUserName"];
@@ -23,7 +23,7 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
     
     // Get vars
     const name = (req.query.name || (req.body && req.body.name));
-    const platform: Platform = (req.query.platform || (req.body && req.body.platform) || Platform.acti);
+    const platform: Platform = (req.query.platform || (req.body && req.body.platform) || Platform.xbl);
     const from = (req.query.from || (req.body && req.body.from));
     const to = (req.query.to || (req.body && req.body.to));
 
