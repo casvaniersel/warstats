@@ -1,4 +1,4 @@
-export interface Welcome {
+export interface IMWLoggedInUserInfo {
     status:                      null;
     exceptionMessageList:        any[];
     errors:                      Errors;

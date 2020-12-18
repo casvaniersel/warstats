@@ -1,4 +1,4 @@
-export interface Welcome {
+export interface IMWWeeklyStats {
     mp: Mp;
     wz: Wz;
 }

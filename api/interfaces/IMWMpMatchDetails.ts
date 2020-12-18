@@ -1,4 +1,4 @@
-export interface Welcome {
+export interface IMWMpMatchDetails {
     summary: Summary;
     matches: Match[];
 }

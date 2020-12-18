@@ -1,4 +1,4 @@
-export interface Welcome {
+export interface IMWMpDetails {
     title:            string;
     platform:         string;
     username:         string;
