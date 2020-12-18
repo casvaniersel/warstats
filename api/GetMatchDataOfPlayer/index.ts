@@ -42,12 +42,13 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
         let matchesbetweentimespan: Match[] = data.matches.filter(x => x.utcStartSeconds > from && x.utcEndSeconds < to)
 
         // Output
-        const responseMessage = matchesbetweentimespan.forEach(
-            match => 
+        const responseMessage = ""
+        matchesbetweentimespan.forEach(
+            match => responseMessage.concat(
             "<h1>MatchId: " + match.matchID + "</h1><br>"
             + "Player: " + match.player.username + "<br>"
             + "Kills: " + match.playerStats.kills + "<br>"
-            + "Placement: " + match.playerStats.teamPlacement+ "<br><br>")
+            + "Placement: " + match.playerStats.teamPlacement+ "<br><br>"))
 
         context.res = {
             // status: 200, /* Defaults to 200 */
