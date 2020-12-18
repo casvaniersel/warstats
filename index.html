@@ -25,7 +25,7 @@
       let KdOfC4zler = await playerdatac4zlerresponse.text();
       document.querySelector("#KdOfC4zler").innerHTML = JSON.stringify(KdOfC4zler);
 
-      let matchdatac4zlerrepsonse = await fetch("/api/matchdataofplayer?name=c4zler&from=1607454000000&to=1607464800000"); // 8 dec from 20:00 to 23:00 utc+1
+      let matchdatac4zlerrepsonse = await fetch("/api/matchdataofplayer?name=c4zler&from=1607454000000&to=1608274800000"); // 8 dec from 20:00 to 18 dec 8:00 utc+1
       let matchdataOfC4zler = await matchdatac4zlerrepsonse.text();
       document.querySelector("#matchdataOfKuubs").innerHTML = JSON.stringify(matchdataOfC4zler);
     } catch (error) {
