@@ -28,6 +28,9 @@ Neem de volgende zaken in acht
 - Maak een `Feature/Branch` aan voor grotere features
 - Gebruik engelse imperatieve commit messages ("Add file, Update API, Delete file, etc.") 
 
+### Front End
+De front end code zit in de `./src` folder. Voer een `npm install` uit voor je aan de slag gaat. Vervolgens kun je de HTML serveren met `npm run start`. Via de browser ga je naar http://localhost:9000. 
+
 # Deployment
 De structuur van deze solution is gebaseerd op Azure Static Web Apps (Preview). Als je `dev` pusht naar origin en vervolgens daar een Pull Request aanmaakt naar `master` en die goedkeurt, zorgen de Github Actions ervoor dat de site automatische wordt gedeployed naar Azure op url: https://orange-sky-048fbc203.azurestaticapps.net.
 
