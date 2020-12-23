@@ -1,33 +1,59 @@
 import * as React from 'react';
-import ApiService from "../services/ApiService";
+import { BrowserRouter, Route } from "react-router-dom";
+import Header from "./shared/Header";
+import MyProfile from "./profile/Profile";
+import WSHome from "./home/Home";
+import CssBaseline from '@material-ui/core/CssBaseline';
+import blueGrey from "@material-ui/core/colors/blueGrey";
+import amber from "@material-ui/core/colors/amber";
+import pink from "@material-ui/core/colors/pink";
+import { createMuiTheme, Theme, ThemeOptions } from "@material-ui/core/styles";
+import { ThemeProvider } from '@material-ui/styles';
+import { makeStyles, createStyles } from '@material-ui/core/styles';
 
-export class State {
-    kd: string = "0.0";
+
+const theme: ThemeOptions = createMuiTheme({
+    palette: {
+        primary: {
+            // Purple and green play nicely together.
+            main: amber[300],
+        },
+        secondary: {
+            // This is green.A700 as hex.
+            main: pink[400]
+        },
+    },
+});
+
+export default function AppWrap() {
+    const appStyles = makeStyles((theme: Theme) => 
+    createStyles({
+        root: {
+            backgroundColor: blueGrey[900]
+        }
+    })); 
+    const classes = appStyles();
+    return <App classes={classes}/>
 }
 
-export class App extends React.PureComponent<State, {}> {
-
-    public state = new State();
+class App extends React.PureComponent<{ classes }, {}> {
 
     constructor(props) {
         super(props);
     }
 
-    private async updatePlayer() {
-        let data = await ApiService.getPlayerDataFor("c4zler");
-        let result = await data.json();
-        this.setState({ kd: result.br.kdRatio});
-    }
-
-    componentDidMount() {
-        this.updatePlayer();
-    }
-
     render() {
         return (
-            <div>
-                <div id="kd">{this.state.kd}</div>
-            </div>
+            <BrowserRouter>
+                <ThemeProvider theme={theme}>
+                    <CssBaseline />
+                    <div className={this.props.classes.root}>
+                        <Header />
+                        <Route exact path='/' component={() => <WSHome />} />
+                        <Route path='/profile' component={() => <MyProfile gamerTag="KuubsNL" />} />
+                    </div>
+                </ThemeProvider>
+            </BrowserRouter>
         );
     }
 }

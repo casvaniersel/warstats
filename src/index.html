@@ -3,82 +3,20 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
   <title>WarStats</title>
+  <style>
+    html, body {
+      background-color: #263238;
+    }
+  </style>
 </head>
 
 <body>
   <div id="WarStatsApp"></div>
 </body>
-
-<!-- <script>
-  (
-    async function () {
-      try {
-        const user = getUserNameFromUrl();
-        setUserName(user)
-        setPlayerDatafor(user)
-        setMatchDataFor(user)
-      } catch (error) {
-        console.log(error);
-      }
-    })();
-
-  async function getPlayerDatafor(user) {
-    let response = await fetch("/api/playerdata?name=" + user);
-    let playerdata = JSON.parse(await response.text());
-    return playerdata;
-  }
-
-  async function getMatchDataFor(user) {
-    let response = await fetch("/api/matchdataofplayer?name=" + user);
-    let matchdata = JSON.parse(await response.text());
-    return matchdata;
-  }
-
-  async function setMatchDataFor(user) {
-    let data = await getMatchDataFor(user);
-    let lastmatch = data.matches[0];
-    document.querySelector("#lastmatch").innerHTML =
-      '<div style="display:block">MatchId: ' + lastmatch.matchID + '<br>'
-      + 'Date Time: ' + formatDate(epochTimestampToJavascriptDate(lastmatch.utcStartSeconds)) + '<br>'
-      + 'Player: ' + lastmatch.player.username + '<br>'
-      + 'Kills: ' + lastmatch.playerStats.kills + '<br>'
-      + 'Placement: ' + lastmatch.playerStats.teamPlacement + '</div>'
-  }
-
-  async function setPlayerDatafor(user) {
-    let playerdata = await getPlayerDatafor(user);
-    console.log(playerdata);
-    document.querySelector("#kd").innerHTML = playerdata.br.kdRatio;
-    document.querySelector("#wins").innerHTML = playerdata.br.wins;
-  }
-
-  function setUserName(user) {
-    document.querySelector("#name").innerHTML = user.toUpperCase();
-  }
-
-  function getUserNameFromUrl() {
-    const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get('user');
-  }
-
-  function epochTimestampToJavascriptDate(timestampInMillisecond) {
-    return new Date(millisecondsToSeconds(timestampInMillisecond));
-  }
-
-  function millisecondsToSeconds(milliseconds) {
-    let seconds = milliseconds * 1000;
-    return seconds;
-  }
-
-  function formatDate(date) {
-    let dateFormatted = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate() + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
-    return dateFormatted;
-  }
-
-</script> -->
 
 </html>

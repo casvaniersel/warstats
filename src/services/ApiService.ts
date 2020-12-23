@@ -1,6 +1,6 @@
 
 export default class ApiService {
-    static apiUrl = "http://127.0.0.1:7071/api";
+    static apiUrl = "https://warstatsapi20201222173257.azurewebsites.net/api";
 
     /**
      * Get playerdata from API
@@ -31,6 +31,20 @@ export default class ApiService {
             }
         });
 
+        return result;
+    }
+
+    /**
+     * Get all active tournaments
+     */
+    public static async getTournaments() {
+        const endpointUrl = `${this.apiUrl}/tournament/all`;
+        let result = await fetch(endpointUrl, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
         return result;
     }
 }
