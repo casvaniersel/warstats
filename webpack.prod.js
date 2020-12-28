@@ -26,6 +26,5 @@ optimization: {
       })
     ]
    },
-   plugins: [new BundleAnalyzerPlugin()],
    mode: "production"
   });
