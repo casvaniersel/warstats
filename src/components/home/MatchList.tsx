@@ -7,6 +7,7 @@ import IWSMatch from "./Match";
 import grey from "@material-ui/core/colors/grey";
 import brown from "@material-ui/core/colors/brown";
 import { blueGrey } from "@material-ui/core/colors";
+import IWSMatchScore from "../../interfaces/IWSMatchScore";
 
 interface IWSMatchProps {
     scores: IWSScore;
@@ -17,7 +18,7 @@ interface IWSMatchProps {
 */
 const useStyles = makeStyles((theme: Theme) => createStyles({
     root: {
-        margin: "16px -16px 24px",
+        margin: "0 -16px 16px",
         overflowX: "visible",
         padding: "10px"
     },
@@ -40,7 +41,8 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         flexWrap: "nowrap",
         overflowX: "auto",
         overflowY: "hidden",
-        scrollSnapType: "y mandatory"
+        scrollSnapType: "x mandatory",
+        scrollPadding: "50%"
     }
 }));
 
@@ -56,11 +58,15 @@ export default function Match({ scores }: IWSMatchProps) {
         }
     }
 
+    const sortMatches = (a: IWSMatchScore, b: IWSMatchScore) => {
+        return b.points - a.points;
+    }
+
     return (
         <Box component="div" className={`${classes.root} ${getRankClass()}`}>
             <div className={classes.scrollRow}>
             {
-                scores.matches.map((match, i) => <IWSMatch match={match} key={i}/>)
+                scores.matches.sort(sortMatches).map((match, i) => <IWSMatch match={match} key={i}/>)
             }
             </div>
         </Box>

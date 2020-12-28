@@ -34,6 +34,10 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
     cardActions: {
 
     },
+    cardContent: {
+        paddingBottom: "0",
+        paddingTop: "0",
+    },
     ranking: {
         display: "flex",
         flexDirection: "row",
@@ -95,7 +99,7 @@ interface ITeamProps {
 
 export default function WSTeam({ team }: ITeamProps) {
     const classes = useStyles();
-    const [expanded, setExpanded] = React.useState(true);
+    const [expanded, setExpanded] = React.useState(false);
 
     const handleExpandClick = () => {
         setExpanded(!expanded);
@@ -164,11 +168,8 @@ export default function WSTeam({ team }: ITeamProps) {
                 </IconButton>
             </CardActions>
             <Collapse in={expanded} timeout="auto" unmountOnExit>
-                <CardContent>
-                    <h1>{team.name}</h1>
-                    <Typography variant="body2" color="textSecondary" component="div">
-                        <MatchList scores={team.score} />
-                    </Typography>
+                <CardContent className={classes.cardContent}>
+                    <MatchList scores={team.score} />
                 </CardContent>
             </Collapse>
         </Card>
