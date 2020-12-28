@@ -20,7 +20,7 @@ import brown from "@material-ui/core/colors/brown";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconDefinition } from "@fortawesome/fontawesome-common-types";
 import { faXbox, faPlaystation, faSteam, faBattleNet } from "@fortawesome/free-brands-svg-icons";
-import { faGamepad } from "@fortawesome/free-solid-svg-icons";
+import { faGamepad, faSkull } from "@fortawesome/free-solid-svg-icons";
 import IWSPlayer, { Platform } from "../../interfaces/IWSPlayer";
 
 /**
@@ -39,23 +39,23 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         paddingTop: "0",
     },
     ranking: {
+        alignItems: "center",
         display: "flex",
-        flexDirection: "row",
-        height: "100px",
+        flexDirection: "column",
         justifyContent: "center",
         padding: "20px"
     },
     rankIconFirst: {
         color: amber[400],
-        fontSize: "5rem"
+        fontSize: "3.4rem"
     },
     rankIconSecond: {
         color: grey[400],
-        fontSize: "4rem"
+        fontSize: "2.6rem"
     },
     rankIconThird: {
         color: brown[400],
-        fontSize: "2.8rem"
+        fontSize: "2rem"
     },
     rankHeaderTop: {
         display: "flex",
@@ -63,8 +63,23 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         alignItems: "center"
     },
     rankHeader: {
-        fontSize: "2.2rem",
-        color: blueGrey[900]
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        fontSize: "1.8rem",
+    },
+    rankHeaderCircle: {
+        backgroundColor: blueGrey[700],
+        color: "white",
+        borderRadius: "50%",
+        fontSize: "1.2rem",
+        padding: "10px",
+        width: "48px",
+        height: "48px",
+        textAlign: "center"
+    },
+    rankHeaderPoints: {
+        fontWeight: "bold"
     },
     cardHeader: {
         display: "flex",
@@ -89,6 +104,9 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         margin: "0 20px"
     },
     platformIndicatorRow: {
+        padding: "5px"
+    },
+    killRow: {
         padding: "5px"
     }
 }));
@@ -129,18 +147,23 @@ export default function WSTeam({ team }: ITeamProps) {
     return (
         <Card className={classes.root}>
             <Box component="div" className={classes.ranking}>
-                {
-                    team.score.rank > 3 ?
-                        <div className={classes.rankHeader}>{team.score.rank}</div>
-                        :
-                        <div className={classes.rankHeaderTop}>
-
+                <div className={classes.rankHeader}>
+                    {
+                        team.score.rank > 3 ?
+                            <div className={classes.rankHeaderCircle}>{team.score.rank}</div>
+                            :
+                            <div className={classes.rankHeaderTop}>
                                 <EmojiEvents color="primary" className={getRankClass()} />
                                 <span className={getRankClass()}>{team.score.rank}</span>
-
-                        </div>
-
-                }
+                            </div>
+                    }
+                </div>
+                <div className={classes.rankHeaderPoints}>
+                    {team.score.points} {team.score.points > 1 ? "points" : "point"}
+                </div>
+                <div className={classes.rankHeaderPoints}>
+                    {team.score.totalKills} <FontAwesomeIcon icon={faSkull} />
+                </div>
             </Box>
             <Box component="div" className={classes.cardHeader}>
                 {
