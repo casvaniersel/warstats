@@ -3,12 +3,13 @@ import ApiService from "../../services/ApiService";
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import IWSTournament from "../../interfaces/IWSTournament";
 import IWSTeam from "../../interfaces/IWSTeam";
-import IWScore from "../../interfaces/IWSScore";
+import IWScore from "../../interfaces/IWSTeamScore";
 import IWSRules from "../../interfaces/IWSRules";
-import IWSPlayer from "../../interfaces/IWSPlayer";
+import IWSPlayer, { Platform } from "../../interfaces/IWSPlayer";
 import Grid from "@material-ui/core/Grid/Grid";
 import Team from "./Team";
 import blueGrey from "@material-ui/core/colors/blueGrey";
+const testdata = require("./TESTDATA.json");
 
 export default function WSHome() {
     /**
@@ -58,76 +59,12 @@ class Home extends React.PureComponent<IHomeProps, State> {
 
     public async componentDidMount() {
         /* TESTDATA */
-        let data = {
-            id: null,
-            name: 'Test Tournooi Nu',
-            start: '2020-12-22T17:47:26.1516875+00:00',
-            end: '2020-12-22T19:47:26.1586745+00:00',
-            teams: [
-                {
-                    name: "Braaiers",
-                    players: [
-                        {
-                            gamerTag: 'JKROOTS',
-                            platform: 'xbl'
-                        },
-                        {
-                            gamerTag: 'C4zler',
-                            platform: 'xbl'
-                        }
-                    ],
-                    scores: {
-                        points: 1,
-                        matches: [
-                            {
-                                id: null,
-                                player: {
-                                    gamerTag: 'C4zler',
-                                    platform: 'xbl'
-                                },
-                                kills: 1,
-                                placement: 11
-                            }
-                        ],
-                        rank: 2
-                    }
-                },
-                {
-                    name: "Broeders",
-                    players: [
-                        {
-                            gamerTag: 'Kuubsnl',
-                            platform: 'xbl'
-                        },
-                        {
-                            gamerTag: 'Bertonenl',
-                            platform: 'xbl'
-                        }
-                    ],
-                    scores: {
-                        points: 14,
-                        matches: [
-                            {
-                                id: null,
-                                player: {
-                                    gamerTag: 'Bertonenl',
-                                    platform: 'xbl'
-                                },
-                                kills: 4,
-                                placement: 1
-                            }
-                        ],
-                        rank: 1
-                    }
-                }
-            ]
-        } 
+        //this.sortTeamsByRank(testdata);
         
-        
-        /* const tournaments = await this.getTournaments();
+        const tournaments = await this.getTournaments();
         // Only use latest tournament
-        this.sortTeamsByRank(tournaments[tournaments.length-1]); */
-        this.sortTeamsByRank(data);
+        this.sortTeamsByRank(tournaments[tournaments.length-1]);
+        
     }
     
     /**
@@ -145,7 +82,7 @@ class Home extends React.PureComponent<IHomeProps, State> {
      */
     private sortTeamsByRank(tournament: IWSTournament) {
         console.log(tournament);
-        tournament.teams.sort((a,b) => a.scores.rank - b.scores.rank);
+        tournament.teams.sort((a,b) => a.score.rank - b.score.rank);
         this.setState({ tournament });
     }
 
@@ -158,7 +95,7 @@ class Home extends React.PureComponent<IHomeProps, State> {
                 {
                     this.state.tournament && this.state.tournament.teams.map((team, i) => {
                         return (
-                            <Grid item xs={12} sm={6} md={4} key={i}>
+                            <Grid item xs={12} sm={12} md={6} key={i}>
                                 <Team team={team} key={`team${i}`}/>
                             </Grid>);
                     })

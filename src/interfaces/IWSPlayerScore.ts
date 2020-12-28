@@ -1,7 +1,6 @@
 import IWSPlayer from "./IWSPlayer";
-export default interface IWSMatch {
-    id: string;
+export default interface IWSPlayerScore {
     player: IWSPlayer;
     kills: number;
-    placement: number;
+    kd: number;
 }

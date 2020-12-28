@@ -1,7 +1,8 @@
-import Player from "./IWSPlayer";
-import Score from "./IWSScore";
+import IWSPlayer from "./IWSPlayer";
+import IWSTeamScore from "./IWSTeamScore";
 export default interface IWSTeam {
+    id: string;
     name: string;
-    players: Array<Player>;
-    scores: Score;
+    players: Array<IWSPlayer>;
+    score: IWSTeamScore;
 }

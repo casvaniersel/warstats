@@ -1,0 +1,385 @@
+{
+    "id": "000000000000000000000000",
+    "name": "Toernooi gisteren avond",
+    "start": "2020-12-27T17:00:00Z",
+    "end": "2020-12-27T22:00:00Z",
+    "teams": [
+        {
+            "id": "5fe9c9305843d5cfce9746a9",
+            "name": null,
+            "players": [
+                {
+                    "gamerTag": "JKROOTS",
+                    "platform": "xbl"
+                },
+                {
+                    "gamerTag": "C4zler",
+                    "platform": "xbl"
+                }
+            ],
+            "score": {
+                "rank": 3,
+                "points": 19,
+                "totalKills": 0.0,
+                "matches": [
+                    {
+                        "id": "3525150739520782010",
+                        "playerScores": [
+                            {
+                                "player": {
+                                    "gamerTag": "C4zler",
+                                    "platform": "xbl"
+                                },
+                                "kills": 2,
+                                "kd": 2.0
+                            }
+                        ],
+                        "totalKills": 2,
+                        "placement": 3,
+                        "points": 8,
+                        "countsForTotal": true
+                    },
+                    {
+                        "id": "5654770661240678171",
+                        "playerScores": [
+                            {
+                                "player": {
+                                    "gamerTag": "C4zler",
+                                    "platform": "xbl"
+                                },
+                                "kills": 1,
+                                "kd": 0.5
+                            }
+                        ],
+                        "totalKills": 1,
+                        "placement": 33,
+                        "points": 1,
+                        "countsForTotal": false
+                    },
+                    {
+                        "id": "2214034821730986909",
+                        "playerScores": [
+                            {
+                                "player": {
+                                    "gamerTag": "C4zler",
+                                    "platform": "xbl"
+                                },
+                                "kills": 2,
+                                "kd": 0.6666666666666666
+                            }
+                        ],
+                        "totalKills": 2,
+                        "placement": 18,
+                        "points": 2,
+                        "countsForTotal": true
+                    },
+                    {
+                        "id": "12753840660890914922",
+                        "playerScores": [
+                            {
+                                "player": {
+                                    "gamerTag": "C4zler",
+                                    "platform": "xbl"
+                                },
+                                "kills": 5,
+                                "kd": 1.25
+                            }
+                        ],
+                        "totalKills": 5,
+                        "placement": 4,
+                        "points": 9,
+                        "countsForTotal": true
+                    },
+                    {
+                        "id": "2079378814061781993",
+                        "playerScores": [
+                            {
+                                "player": {
+                                    "gamerTag": "C4zler",
+                                    "platform": "xbl"
+                                },
+                                "kills": 0,
+                                "kd": 0.0
+                            }
+                        ],
+                        "totalKills": 0,
+                        "placement": 71,
+                        "points": 0,
+                        "countsForTotal": false
+                    }
+                ]
+            }
+        },
+        {
+            "id": "5fe9c9305843d5cfce9746aa",
+            "name": null,
+            "players": [
+                {
+                    "gamerTag": "Kuubsnl",
+                    "platform": "xbl"
+                },
+                {
+                    "gamerTag": "Bertonenl",
+                    "platform": "xbl"
+                }
+            ],
+            "score": {
+                "rank": 1,
+                "points": 24,
+                "totalKills": 0.0,
+                "matches": [
+                    {
+                        "id": "18431479080492626827",
+                        "playerScores": [
+                            {
+                                "player": {
+                                    "gamerTag": "Kuubsnl",
+                                    "platform": "xbl"
+                                },
+                                "kills": 2,
+                                "kd": 2.0
+                            },
+                            {
+                                "player": {
+                                    "gamerTag": "Bertonenl",
+                                    "platform": "xbl"
+                                },
+                                "kills": 6,
+                                "kd": 3.0
+                            }
+                        ],
+                        "totalKills": 8,
+                        "placement": 7,
+                        "points": 10,
+                        "countsForTotal": true
+                    },
+                    {
+                        "id": "84872427829290538",
+                        "playerScores": [
+                            {
+                                "player": {
+                                    "gamerTag": "Kuubsnl",
+                                    "platform": "xbl"
+                                },
+                                "kills": 3,
+                                "kd": 1.5
+                            },
+                            {
+                                "player": {
+                                    "gamerTag": "Bertonenl",
+                                    "platform": "xbl"
+                                },
+                                "kills": 3,
+                                "kd": 1.0
+                            }
+                        ],
+                        "totalKills": 6,
+                        "placement": 27,
+                        "points": 6,
+                        "countsForTotal": true
+                    },
+                    {
+                        "id": "2292813163959329563",
+                        "playerScores": [
+                            {
+                                "player": {
+                                    "gamerTag": "Kuubsnl",
+                                    "platform": "xbl"
+                                },
+                                "kills": 6,
+                                "kd": 6.0
+                            },
+                            {
+                                "player": {
+                                    "gamerTag": "Bertonenl",
+                                    "platform": "xbl"
+                                },
+                                "kills": 2,
+                                "kd": 0.6666666666666666
+                            }
+                        ],
+                        "totalKills": 8,
+                        "placement": 13,
+                        "points": 8,
+                        "countsForTotal": true
+                    }
+                ]
+            }
+        },
+        {
+            "id": "5fe9c9305843d5cfce9746ab",
+            "name": null,
+            "players": [
+                {
+                    "gamerTag": "stefankrul",
+                    "platform": "xbl"
+                },
+                {
+                    "gamerTag": "mikethespeciali",
+                    "platform": "xbl"
+                }
+            ],
+            "score": {
+                "rank": 2,
+                "points": 20,
+                "totalKills": 0.0,
+                "matches": [
+                    {
+                        "id": "3525150739520782010",
+                        "playerScores": [
+                            {
+                                "player": {
+                                    "gamerTag": "stefankrul",
+                                    "platform": "xbl"
+                                },
+                                "kills": 2,
+                                "kd": 2.0
+                            }
+                        ],
+                        "totalKills": 2,
+                        "placement": 3,
+                        "points": 8,
+                        "countsForTotal": true
+                    },
+                    {
+                        "id": "5654770661240678171",
+                        "playerScores": [
+                            {
+                                "player": {
+                                    "gamerTag": "stefankrul",
+                                    "platform": "xbl"
+                                },
+                                "kills": 1,
+                                "kd": 0.5
+                            }
+                        ],
+                        "totalKills": 1,
+                        "placement": 33,
+                        "points": 1,
+                        "countsForTotal": false
+                    },
+                    {
+                        "id": "2214034821730986909",
+                        "playerScores": [
+                            {
+                                "player": {
+                                    "gamerTag": "stefankrul",
+                                    "platform": "xbl"
+                                },
+                                "kills": 2,
+                                "kd": 1.0
+                            }
+                        ],
+                        "totalKills": 2,
+                        "placement": 18,
+                        "points": 2,
+                        "countsForTotal": true
+                    },
+                    {
+                        "id": "12753840660890914922",
+                        "playerScores": [
+                            {
+                                "player": {
+                                    "gamerTag": "stefankrul",
+                                    "platform": "xbl"
+                                },
+                                "kills": 6,
+                                "kd": 6.0
+                            }
+                        ],
+                        "totalKills": 6,
+                        "placement": 4,
+                        "points": 10,
+                        "countsForTotal": true
+                    },
+                    {
+                        "id": "2079378814061781993",
+                        "playerScores": [
+                            {
+                                "player": {
+                                    "gamerTag": "stefankrul",
+                                    "platform": "xbl"
+                                },
+                                "kills": 1,
+                                "kd": 1.0
+                            }
+                        ],
+                        "totalKills": 1,
+                        "placement": 71,
+                        "points": 1,
+                        "countsForTotal": false
+                    }
+                ]
+            }
+        },
+        {
+            "id": "5fe9c9305843d5cfce9746ac",
+            "name": null,
+            "players": [
+                {
+                    "gamerTag": "Saaan",
+                    "platform": "xbl"
+                }
+            ],
+            "score": {
+                "rank": 4,
+                "points": 1,
+                "totalKills": 0.0,
+                "matches": [
+                    {
+                        "id": "18431479080492626827",
+                        "playerScores": [
+                            {
+                                "player": {
+                                    "gamerTag": "Saaan",
+                                    "platform": "xbl"
+                                },
+                                "kills": 0,
+                                "kd": 0.0
+                            }
+                        ],
+                        "totalKills": 0,
+                        "placement": 7,
+                        "points": 1,
+                        "countsForTotal": true
+                    },
+                    {
+                        "id": "84872427829290538",
+                        "playerScores": [
+                            {
+                                "player": {
+                                    "gamerTag": "Saaan",
+                                    "platform": "xbl"
+                                },
+                                "kills": 0,
+                                "kd": 0.0
+                            }
+                        ],
+                        "totalKills": 0,
+                        "placement": 27,
+                        "points": 0,
+                        "countsForTotal": true
+                    }
+                ]
+            }
+        }
+    ],
+    "rules": {
+        "description": "Top 3 games, 1 ppk and placement 10,8,6,4,2,1,1,1,1,1",
+        "type": 2,
+        "pointsPerKill": 1,
+        "pointsPerPlacement": {
+            "1": 10,
+            "2": 8,
+            "3": 6,
+            "4": 4,
+            "5": 2,
+            "6": 1,
+            "7": 1,
+            "8": 1,
+            "9": 1,
+            "10": 1
+        },
+        "numberOfBestGames": 3
+    }
+}
