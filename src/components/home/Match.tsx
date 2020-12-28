@@ -76,14 +76,14 @@ export default function Match({ match }: IWSMatchProps) {
                             return(
                                 <div className={classes.player} key={i}>
                                     <div>{playerScore.player.gamerTag}</div>
-                                    <div><FontAwesomeIcon icon={faSkull} /><span className={classes.placementNumber}>{playerScore.kills}</span></div>
+                                    <div><span className={classes.placementNumber}>{playerScore.kills}</span><FontAwesomeIcon icon={faSkull} /></div>
                                 </div>   
                             )
                         })
                     }
                 </Box>
                 <Box component="div" className={classes.placement}>
-                    <FontAwesomeIcon icon={faAward} /><span className={classes.placementNumber}>{match.placement}</span>
+                    <span className={classes.placementNumber}>{match.placement}</span><FontAwesomeIcon icon={faAward} />
                 </Box>
             </Card>
         </section>

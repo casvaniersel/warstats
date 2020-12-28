@@ -81,7 +81,6 @@ class Home extends React.PureComponent<IHomeProps, State> {
      * @param tournament Last created tournament
      */
     private sortTeamsByRank(tournament: IWSTournament) {
-        console.log(tournament);
         tournament.teams.sort((a,b) => a.score.rank - b.score.rank);
         this.setState({ tournament });
     }
