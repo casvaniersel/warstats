@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { BrowserRouter, Route } from "react-router-dom";
 import Header from "./shared/Header";
-import MyProfile from "./profile/Profile";
 import WSHome from "./home/Home";
 import CssBaseline from '@material-ui/core/CssBaseline';
 import blueGrey from "@material-ui/core/colors/blueGrey";
@@ -50,7 +49,6 @@ class App extends React.PureComponent<{ classes }, {}> {
                     <div className={this.props.classes.root}>
                         <Header />
                         <Route exact path='/' component={() => <WSHome />} />
-                        <Route path='/profile' component={() => <MyProfile gamerTag="KuubsNL" />} />
                     </div>
                 </ThemeProvider>
             </BrowserRouter>
