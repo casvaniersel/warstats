@@ -57,7 +57,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         textAlign: "center",
     },
     placementNumber: {
-        padding: "0 10px"
+        padding: "0 10px 0 0"
     }
 }));
 
