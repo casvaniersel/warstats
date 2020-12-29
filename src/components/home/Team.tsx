@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
-        padding: "20px"
+        padding: "10px 5px 5px 5px"
     },
     rankIconFirst: {
         color: amber[400],
@@ -85,7 +85,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         display: "flex",
         flexDirection: "row",
         justifyContent: "center",
-        padding: "10px"
+        padding: "5px"
     },
     expand: {
         transform: 'rotate(0deg)',
@@ -104,10 +104,17 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         margin: "0 20px"
     },
     platformIndicatorRow: {
-        padding: "5px"
+        position: "relative",
+        padding: "0 5px 0 0",
+        textAlign: "right",
+        top: "10px",
+        width: "64px"       
     },
     killRow: {
         padding: "5px"
+    },
+    killCount: {
+        padding: "0 10px 0 0"
     }
 }));
 
@@ -144,6 +151,16 @@ export default function WSTeam({ team }: ITeamProps) {
         }
     }
 
+    const getPlayerKills = (player: IWSPlayer) => {
+        let killCounter = 0;
+        const countedMatches = team.score.matches.filter(match => match.countsForTotal);
+        countedMatches.forEach(match => {
+            const scoredByPlayer = match.playerScores.filter(score => score.player.gamerTag === player.gamerTag);
+            scoredByPlayer.forEach(playerScore => killCounter += playerScore.kills);
+        });
+        return killCounter;
+    }
+
     return (
         <Card className={classes.root}>
             <Box component="div" className={classes.ranking}>
@@ -161,18 +178,20 @@ export default function WSTeam({ team }: ITeamProps) {
                 <div className={classes.rankHeaderPoints}>
                     {team.score.points} {team.score.points > 1 ? "points" : "point"}
                 </div>
-                <div className={classes.rankHeaderPoints}>
-                    {team.score.totalKills} <FontAwesomeIcon icon={faSkull} />
-                </div>
             </Box>
             <Box component="div" className={classes.cardHeader}>
                 {
                     team.players.map((player, i) => {
+                        let playerKills = getPlayerKills(player);
                         return (
                             <div className={classes.playerAvatar} key={i}>
+                                <div className={classes.platformIndicatorRow}><FontAwesomeIcon icon={getPlatformIcon(player)} /></div>
                                 <AccountCircle fontSize="large" />
                                 <Typography variant="body2" color="textSecondary" component="div">{player.gamerTag}</Typography>
-                                <div className={classes.platformIndicatorRow}><FontAwesomeIcon icon={getPlatformIcon(player)} /></div>
+                                <div className={classes.killRow}>
+                                    <span className={classes.killCount}>{playerKills}</span>
+                                    <FontAwesomeIcon icon={faSkull} />
+                                </div>
                             </div>
                         )
                     })

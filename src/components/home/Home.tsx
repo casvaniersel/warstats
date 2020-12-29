@@ -6,8 +6,7 @@ import IWSTeam from "../../interfaces/IWSTeam";
 import IWScore from "../../interfaces/IWSTeamScore";
 import IWSRules from "../../interfaces/IWSRules";
 import IWSPlayer, { Platform } from "../../interfaces/IWSPlayer";
-import Grid from "@material-ui/core/Grid/Grid";
-import Team from "./Team";
+import WSTournament from "./Tournament";
 import blueGrey from "@material-ui/core/colors/blueGrey";
 const testdata = require("./TESTDATA.json");
 
@@ -22,14 +21,6 @@ export default function WSHome() {
         },
         tournament: {
             padding: "20px"
-        },
-        homeContainer: {
-            padding: "20px"
-        },
-        teamContainer: {
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "center"
         }
     }));
     const classes = useStyles();
@@ -87,19 +78,7 @@ class Home extends React.PureComponent<IHomeProps, State> {
 
     render() {
         return (
-            <Grid container id="home" className={this.props.classes.root} justify="center" direction="column">
-                <Grid item xs={12} className={this.props.classes.homeContainer}>
-
-                </Grid>
-                {
-                    this.state.tournament && this.state.tournament.teams.map((team, i) => {
-                        return (
-                            <Grid item xs={12} sm={12} md={6} key={i}>
-                                <Team team={team} key={`team${i}`}/>
-                            </Grid>);
-                    })
-                }
-            </Grid>
+            <WSTournament tournament={this.state.tournament} />
         );
     }
 }
