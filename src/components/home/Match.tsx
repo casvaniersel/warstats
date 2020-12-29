@@ -6,10 +6,11 @@ import Card from '@material-ui/core/Card';
 import { blueGrey } from "@material-ui/core/colors";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAward, faSkull } from "@fortawesome/free-solid-svg-icons";
-
+import IWSRules from "../../interfaces/IWSRules";
 
 interface IWSMatchProps {
     match: IWSMatchScore;
+    rules: IWSRules;
 }
 
 /**
@@ -32,11 +33,25 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         padding: "10px"
     },
     points: {
+        borderRadius: "4px",
         color: blueGrey[900],
+        display: "flex",
+        flexDirection: "row",
         fontSize: "1.4rem",
         padding: "10px",
+        alignItems: "center",
+        justifyContent: "center"
+    },
+    pointsCircle: {
+        backgroundColor: blueGrey[800],
+        border: `1px solid ${blueGrey[800]}`,
+        borderRadius: "50%",
+        color: "white",
+        padding: "8px",
+        width: "48px",
+        height: "48px",
         textAlign: "center",
-        textDecoration: "underline"
+        marginRight: "10px"
     },
     kills: {
         alignItems: "center",
@@ -53,22 +68,38 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
     },
     placement: {
         fontSize: "1.2rem",
-        padding: "10px",
+        padding: "10px 0 0 0",
         textAlign: "center",
     },
     placementNumber: {
         padding: "0 10px 0 0"
+    },
+    placementPoints: {
+        fontSize: "0.8rem",
+        textAlign: "center",
     }
 }));
 
-export default function Match({ match }: IWSMatchProps) {
+export default function Match({ match, rules }: IWSMatchProps) {
     const classes = useStyles();
+
+    /**
+     * Return amount of points based on placement and rules 
+     * @param placement Placement of played match
+     */
+    const getPointsByPlacement = (placement) => {
+        if(rules) {
+            return rules.pointsPerPlacement[`${placement}`] || 0;
+        }
+    }
+
+    const points = getPointsByPlacement(match.placement);
 
     return (
         <section className={classes.root}>
             <Card className={classes.matchCard}>
                 <Box component="div" className={classes.points}>
-                    {match.points} {match.points > 1 ? "points" : "point"}
+                    <span className={classes.pointsCircle}>{match.points}</span> {match.points > 1 ? "points" : "point"}
                 </Box>
                 <Box component="div" className={classes.kills}>
                     {
@@ -84,6 +115,9 @@ export default function Match({ match }: IWSMatchProps) {
                 </Box>
                 <Box component="div" className={classes.placement}>
                     <span className={classes.placementNumber}>{match.placement}</span><FontAwesomeIcon icon={faAward} />
+                </Box>
+                <Box component="div" className={classes.placementPoints}>
+                    {points} {points === 1 ? "point" : "points"}
                 </Box>
             </Card>
         </section>

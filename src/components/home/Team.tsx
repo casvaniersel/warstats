@@ -22,6 +22,8 @@ import { IconDefinition } from "@fortawesome/fontawesome-common-types";
 import { faXbox, faPlaystation, faSteam, faBattleNet } from "@fortawesome/free-brands-svg-icons";
 import { faGamepad, faSkull } from "@fortawesome/free-solid-svg-icons";
 import IWSPlayer, { Platform } from "../../interfaces/IWSPlayer";
+import IWSRules from "../../interfaces/IWSRules";
+
 
 /**
 * Component Styling
@@ -120,9 +122,10 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
 
 interface ITeamProps {
     team: IWSTeam;
+    rules: IWSRules;
 }
 
-export default function WSTeam({ team }: ITeamProps) {
+export default function WSTeam({ team, rules }: ITeamProps) {
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
 
@@ -160,6 +163,8 @@ export default function WSTeam({ team }: ITeamProps) {
         });
         return killCounter;
     }
+
+    
 
     return (
         <Card className={classes.root}>
@@ -211,7 +216,7 @@ export default function WSTeam({ team }: ITeamProps) {
             </CardActions>
             <Collapse in={expanded} timeout="auto" unmountOnExit>
                 <CardContent className={classes.cardContent}>
-                    <MatchList scores={team.score} />
+                    <MatchList scores={team.score} rules={rules} />
                 </CardContent>
             </Collapse>
         </Card>
