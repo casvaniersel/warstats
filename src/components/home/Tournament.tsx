@@ -105,7 +105,7 @@ export default function WSTournament({ tournament }: IWSTournamentProps) {
                             tournament.teams.map((team, i) => {
                                 return (
                                     <Grid item xs={12} sm={12} md={6} key={i}>
-                                        <Team team={team} key={`team${i}`} />
+                                        <Team team={team} rules={tournament.rules} key={`team${i}`} />
                                     </Grid>);
                             })
                         }
