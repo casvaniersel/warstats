@@ -3,11 +3,14 @@ import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import IWSTournament from "../../interfaces/IWSTournament";
 import Grid from "@material-ui/core/Grid";
 import Team from "./Team";
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
 import blueGrey from "@material-ui/core/colors/blueGrey";
 import { RuleType } from "../../interfaces/IWSRules";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconDefinition } from "@fortawesome/fontawesome-common-types";
 import { faAward, faSkull, faBomb } from "@fortawesome/free-solid-svg-icons";
+import { format } from "path";
 
 /**
 * Component Styling
@@ -22,27 +25,38 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         marginTop: "10px",
         width: "95%",
     },
-    homeContainer: {
+    tournamentInfoCard: {
+        color: blueGrey[900],
         display: "flex",
-        flexDirection: "row",
-        justifyItems: "center",
+        flexDirection: "column",
+        alignItems: "center",
+    },
+    homeContainer: {
         padding: "20px"
+    },
+    descriptionContainer: {
+        color: "white",
+        fontSize: "1.2rem",
+        padding: "10px"
     },
     tournamentName: {
         flexGrow: 1,
         fontSize: "2rem",
-        color: "white",
-        padding: "10px"
+        padding: "10px",
+        textAlign: "center"
     },
     tournamentType: {
         alignItems: "center",
         border: "1px white solid",
-        borderRadius: " 4px",
-        backgroundColor: blueGrey[700],
+        borderTopColor: blueGrey[800],
+        borderRadius: "0 0 4px 4px",
+        backgroundColor: blueGrey[800],
         color: "white",
         display: "flex",
         flexDirection: "row",
         padding: "10px 4px",
+        position: "relative",
+        top: "-1px",
         width: "48px",
         height: "48px"
     },
@@ -50,9 +64,34 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         fontSize: "1rem",
         margin: "2px"
     },
-    timeSpan:{
+    calendar: {
+        display: "flex",
+        flexDirection: "column",
+        width: "64px",
+        height: "64px"
+    },
+    calendarHeader: {
+        backgroundColor: blueGrey[700],
         color: "white",
+        fontSize: "0.8rem",
+        textAlign: "center"
+    },
+    calendarDate: {
+        border: `1px solid ${blueGrey[700]}`, 
+        color: blueGrey[700],
+        textAlign: "center",
+        height: "42px",
+        padding: "4px"
+    },
+    timeSpan:{
+        alignItems: "center",
+        display: "flex",
+        flexDirection: "row",
         fontSize: "1.2rem",
+        padding: "0 0 10px 0",
+    },
+    timeFrame: {
+        flexGrow: 1,
         textAlign: "center"
     }
 }));
@@ -61,15 +100,27 @@ interface IWSTournamentProps {
     tournament: IWSTournament;
 }
 
+interface IWSCalendarDay {
+    year?: number;
+    month: string;
+    day: number;
+}
+
 export default function WSTournament({ tournament }: IWSTournamentProps) {
     const classes = useStyles();
 
-    const formatDate = (dateString: string) => {
+    const formatDate = (dateString: string): IWSCalendarDay => {
         const months = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
         const returnDate = new Date(dateString);
-        let minutes = returnDate.getMinutes().toString();
-        if(minutes.length === 1) { minutes = `0${minutes}`; }
-        return `${returnDate.getDate()} ${months[returnDate.getMonth()]} ${returnDate.getFullYear()} ${returnDate.getHours()}:${minutes}`;
+        
+        return { month: months[returnDate.getMonth()], day: returnDate.getDate()};
+    }
+
+    const formatTime = (dateString: string) => {
+        const returnTime = new Date(dateString);
+        let minutes = returnTime.getMinutes().toString();
+        if(minutes.length === 1) { minutes = `0${minutes}`}; 
+        return `${returnTime.getHours()}:${minutes}`;
     }
 
     const getRuleTypeIcon = (): Array<IconDefinition> => {
@@ -87,20 +138,30 @@ export default function WSTournament({ tournament }: IWSTournamentProps) {
                 tournament ?
                     <React.Fragment>
                         <Grid item xs={12} className={classes.homeContainer}>
+                            <Card className={classes.tournamentInfoCard}>
+                            <div className={classes.tournamentType}>
+                                {
+                                    getRuleTypeIcon().map((icon, i) => <FontAwesomeIcon icon={icon} key={i} className={classes.typeIcon}/>)
+                                }
+                            </div>
                             {
                                 tournament.name ?
                                     <div className={classes.tournamentName}>{tournament.name}</div>
                                     :
                                     <div>Tournament</div>
                             }
-                            <div className={classes.tournamentType}>
-                                {
-                                    getRuleTypeIcon().map((icon, i) => <FontAwesomeIcon icon={icon} key={i} className={classes.typeIcon}/>)
-                                }
-                            </div>
+                            <CardContent>
+                                <div className={classes.timeSpan}>
+                                    <div className={classes.calendar}>
+                                        <div className={classes.calendarHeader}>{formatDate(tournament.start).month}</div>
+                                        <div className={classes.calendarDate}>{formatDate(tournament.start).day}</div>
+                                    </div>
+                                    <div className={classes.timeFrame}>{`${formatTime(tournament.start)} - ${formatTime(tournament.end)}`}</div>
+                                </div>
+                                <div>{tournament.rules.description}</div>
+                            </CardContent>
+                            </Card>
                         </Grid>
-                        {/* TODO: iets leuks maken van de time */}
-                        <div className={classes.timeSpan}>{formatDate(tournament.start)} - {formatDate(tournament.end)}</div>
                         {
                             tournament.teams.map((team, i) => {
                                 return (
@@ -109,6 +170,7 @@ export default function WSTournament({ tournament }: IWSTournamentProps) {
                                     </Grid>);
                             })
                         }
+                        
                     </React.Fragment>
                     :
                     null
