@@ -20,7 +20,7 @@ const theme: ThemeOptions = createMuiTheme({
         },
         secondary: {
             // This is green.A700 as hex.
-            main: pink[400]
+            main: blueGrey[900]
         },
     },
 });
@@ -49,7 +49,7 @@ class App extends React.PureComponent<{ classes }, {}> {
                     <CssBaseline />
                     <div className={this.props.classes.root}>
                         <Header />
-                        <Route exact path='/' component={() => <WSHome />} />
+                        <Route exact path='/' component={() => <WSNew />} />
                         <Route path='/new' component={() => <WSNew />} />
                     </div>
                 </ThemeProvider>

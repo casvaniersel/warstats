@@ -5,6 +5,8 @@ import blueGrey from "@material-ui/core/colors/blueGrey";
 import Fab from "@material-ui/core/Fab";
 import SaveIcon from "@material-ui/icons/Save";
 import { Link } from "react-router-dom";
+import WSClashForm from "./ClashForm";
+import IWSRules from "../../interfaces/IWSRules";
 
 export default function WSNew() {
     /**
@@ -46,18 +48,39 @@ interface INewProps {
 }
 
 class New extends React.PureComponent<INewProps, {}> {
+
+    // Define default rules for tournament
+    private defaultRules: IWSRules = {
+        description: 'Top 3 games, 1 ppk and placement 10,8,6,4,2,1,1,1,1,1',
+        type: 2,
+        pointsPerKill: 1,
+        pointsPerPlacement: {
+            '1': 10,
+            '2': 8,
+            '3': 6,
+            '4': 4,
+            '5': 2,
+            '6': 1,
+            '7': 1,
+            '8': 1,
+            '9': 1,
+            '10': 1
+        },
+        numberOfBestGames: 3
+    };
+
     render() {
         return (
             <div className={this.props.classes.root}>
                 <div className={this.props.classes.form}>
-                    <h1>Work in Progress</h1>
-                    Hit save to go back
+                    <h1>Prepare to CLASH</h1>
+                    <WSClashForm />
                 </div>
                 <div className={this.props.classes.savePanel}>
                     <Link to="/">
-                    <Fab color="primary" aria-label="add" className={this.props.classes.saveIcon}>
-                        <SaveIcon />
-                    </Fab>
+                        <Fab color="primary" aria-label="add" className={this.props.classes.saveIcon}>
+                            <SaveIcon />
+                        </Fab>
                     </Link>
                 </div>
             </div>
