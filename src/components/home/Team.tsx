@@ -30,7 +30,7 @@ import IWSRules from "../../interfaces/IWSRules";
 */
 const useStyles = makeStyles((theme: Theme) => createStyles({
     root: {
-        margin: "20px auto",
+        margin: "20px",
         maxWidth: 345,
     },
     cardActions: {
