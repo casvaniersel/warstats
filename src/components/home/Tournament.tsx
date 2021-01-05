@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useState } from "react";
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import IWSTournament from "../../interfaces/IWSTournament";
 import Grid from "@material-ui/core/Grid";
@@ -10,14 +11,14 @@ import { RuleType } from "../../interfaces/IWSRules";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconDefinition } from "@fortawesome/fontawesome-common-types";
 import { faAward, faSkull, faBomb } from "@fortawesome/free-solid-svg-icons";
-import { format } from "path";
+import WSDialog from "./Dialog";
+
 
 /**
 * Component Styling
 */
 const useStyles = makeStyles((theme: Theme) => createStyles({
     root: {
-        border: "1px solid white",
         borderRadius: "4px",
         backgroundColor: blueGrey[800],
         marginLeft: "auto",
@@ -106,8 +107,18 @@ interface IWSCalendarDay {
     day: number;
 }
 
+interface TournamentType {
+    icon: IconDefinition;
+    ruleType: RuleType;
+}
+
 export default function WSTournament({ tournament }: IWSTournamentProps) {
+
+    const contentKills = "";
+    const contentKillsPlacement = "";
+
     const classes = useStyles();
+    let [dialogStateOpen, setDialogStateOpen] = useState(false); 
 
     const formatDate = (dateString: string): IWSCalendarDay => {
         const months = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
@@ -123,13 +134,21 @@ export default function WSTournament({ tournament }: IWSTournamentProps) {
         return `${returnTime.getHours()}:${minutes}`;
     }
 
-    const getRuleTypeIcon = (): Array<IconDefinition> => {
+    const getRuleTypeIcon = (): Array<TournamentType> => {
         switch(tournament.rules.type) {
-            case RuleType.Kills: return [faSkull];
-            case RuleType.KillsAndPlacement: return [faSkull, faAward];
-            case RuleType.Placement: return [faAward];
-            case RuleType.Bracket: return [faBomb]; 
+            case RuleType.Kills: return [{icon: faSkull, ruleType: RuleType.Kills}];
+            case RuleType.KillsAndPlacement: return [{icon: faSkull, ruleType: RuleType.Kills}, {icon: faAward, ruleType: RuleType.Placement}];
+            case RuleType.Placement: return [{icon: faAward, ruleType: RuleType.Placement}];
+            case RuleType.Bracket: return [{icon: faBomb, ruleType: RuleType.Bracket}]; 
         }
+    }
+
+    const handleDialogClose = () => {
+        setDialogStateOpen(false);
+    }
+
+    const openTournamentTypeDialog = () => {
+        setDialogStateOpen(true);
     }
 
     return (
@@ -139,9 +158,9 @@ export default function WSTournament({ tournament }: IWSTournamentProps) {
                     <React.Fragment>
                         <Grid item xs={12} className={classes.homeContainer}>
                             <Card className={classes.tournamentInfoCard}>
-                            <div className={classes.tournamentType}>
+                            <div className={classes.tournamentType} onClick={openTournamentTypeDialog}>
                                 {
-                                    getRuleTypeIcon().map((icon, i) => <FontAwesomeIcon icon={icon} key={i} className={classes.typeIcon}/>)
+                                    getRuleTypeIcon().map((tournamentType, i) => <FontAwesomeIcon icon={tournamentType.icon} key={i} className={classes.typeIcon}/>)
                                 }
                             </div>
                             {
@@ -175,6 +194,8 @@ export default function WSTournament({ tournament }: IWSTournamentProps) {
                     :
                     null
             }
+            {tournament && <WSDialog title="Tournament Type" icons={getRuleTypeIcon()} open={dialogStateOpen} content="Content" handleClose={handleDialogClose} />}
         </Grid>
     )
 }
+
