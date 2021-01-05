@@ -2,12 +2,11 @@ import * as React from "react";
 import ApiService from "../../services/ApiService";
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import IWSTournament from "../../interfaces/IWSTournament";
-import IWSTeam from "../../interfaces/IWSTeam";
-import IWScore from "../../interfaces/IWSTeamScore";
-import IWSRules from "../../interfaces/IWSRules";
-import IWSPlayer, { Platform } from "../../interfaces/IWSPlayer";
 import WSTournament from "./Tournament";
 import blueGrey from "@material-ui/core/colors/blueGrey";
+import Fab from "@material-ui/core/Fab";
+import AddIcon from "@material-ui/icons/Add";
+import { Link } from "react-router-dom";
 const testdata = require("./TESTDATA.json");
 
 export default function WSHome() {
@@ -16,11 +15,23 @@ export default function WSHome() {
      */
     const useStyles = makeStyles((theme: Theme) => createStyles({
         root: {
-            backgroundColor: blueGrey[900],
-            color: "white"
+            overflowY: "visible"
         },
         tournament: {
             padding: "20px"
+        },
+        addPanel: {
+            backgroundColor: blueGrey[900],
+            bottom: 0,
+            position: "sticky",
+            textAlign: "center",
+            opacity: 0.98,
+            width: "100%",
+            zIndex: 100
+        },
+        addIcon: {
+            position: "relative",
+            top: "-26px"
         }
     }));
     const classes = useStyles();
@@ -51,13 +62,13 @@ class Home extends React.PureComponent<IHomeProps, State> {
     public async componentDidMount() {
         /* TESTDATA */
         //this.sortTeamsByRank(testdata);
-        
+
         const tournaments = await this.getTournaments();
         // Only use latest tournament
-        this.sortTeamsByRank(tournaments[tournaments.length-1]);
-        
+        this.sortTeamsByRank(tournaments[tournaments.length - 1]);
+
     }
-    
+
     /**
      * Get and parse tournaments
      */
@@ -72,13 +83,23 @@ class Home extends React.PureComponent<IHomeProps, State> {
      * @param tournament Last created tournament
      */
     private sortTeamsByRank(tournament: IWSTournament) {
-        tournament.teams.sort((a,b) => a.score.rank - b.score.rank);
+        tournament.teams.sort((a, b) => a.score.rank - b.score.rank);
         this.setState({ tournament });
     }
 
     render() {
         return (
-            <WSTournament tournament={this.state.tournament} />
+            <div className={this.props.classes.root}>
+                <WSTournament tournament={this.state.tournament} />
+                <div className={this.props.classes.addPanel}>
+                    <Link to="/new">
+                        <Fab color="primary" aria-label="add" className={this.props.classes.addIcon}>
+                            <AddIcon />
+                        </Fab>
+                    </Link>
+                </div>
+            </div>
+
         );
     }
 }

@@ -42,8 +42,8 @@ class Header extends React.PureComponent<IHeaderProps, {}> {
 
     render() {
         return (
-            <header id="header">
-                <AppBar position="static">
+
+                <AppBar position="sticky">
                     <Toolbar>
                         <IconButton edge="start" className={this.props.classes.menuButton} color="inherit" aria-label="menu">
                             <Timeline />
@@ -62,7 +62,7 @@ class Header extends React.PureComponent<IHeaderProps, {}> {
                         </IconButton>
                     </Toolbar>
                 </AppBar>
-            </header>
+
         );
     }
 }
