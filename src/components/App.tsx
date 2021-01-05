@@ -2,6 +2,7 @@ import * as React from 'react';
 import { BrowserRouter, Route } from "react-router-dom";
 import Header from "./shared/Header";
 import WSHome from "./home/Home";
+import WSNew from "./new/New";
 import CssBaseline from '@material-ui/core/CssBaseline';
 import blueGrey from "@material-ui/core/colors/blueGrey";
 import amber from "@material-ui/core/colors/amber";
@@ -28,7 +29,7 @@ export default function AppWrap() {
     const appStyles = makeStyles((theme: Theme) => 
     createStyles({
         root: {
-            backgroundColor: blueGrey[900]
+            backgroundColor: blueGrey[900],
         }
     })); 
     const classes = appStyles();
@@ -49,6 +50,7 @@ class App extends React.PureComponent<{ classes }, {}> {
                     <div className={this.props.classes.root}>
                         <Header />
                         <Route exact path='/' component={() => <WSHome />} />
+                        <Route path='/new' component={() => <WSNew />} />
                     </div>
                 </ThemeProvider>
             </BrowserRouter>
