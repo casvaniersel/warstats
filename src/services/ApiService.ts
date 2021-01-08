@@ -54,7 +54,7 @@ export default class ApiService {
      * @param tournament Tournament to save
      */
     public static async newTournament(tournament: IWSTournament) {
-        /* const endpointUrl = `${this.apiUrl}/tournament/new`;
+        const endpointUrl = `${this.apiUrl}/tournament`;
         let result = await fetch(endpointUrl, {
             method: 'POST',
             headers: {
@@ -62,7 +62,6 @@ export default class ApiService {
             },
             body: JSON.stringify(tournament)
         });
-        return result; */
-        console.log(tournament);
+        return result;
     }
 }
