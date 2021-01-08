@@ -117,7 +117,6 @@ class TeamForm extends React.PureComponent<{ classes, onChange, teamId, teamSize
     }
 
     componentDidUpdate() {
-        console.log("TEAM UPDATE", this.state);
         this.props.onChange(this.state);
     }
 
