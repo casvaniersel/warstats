@@ -1,3 +1,4 @@
+import IWSTournament from "../interfaces/IWSTournament";
 
 export default class ApiService {
     static apiUrl = "https://warstatsapi20201222173257.azurewebsites.net/api";
@@ -46,5 +47,22 @@ export default class ApiService {
             }
         });
         return result;
+    }
+
+    /**
+     * Creates a new tournament
+     * @param tournament Tournament to save
+     */
+    public static async newTournament(tournament: IWSTournament) {
+        /* const endpointUrl = `${this.apiUrl}/tournament/new`;
+        let result = await fetch(endpointUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(tournament)
+        });
+        return result; */
+        console.log(tournament);
     }
 }
