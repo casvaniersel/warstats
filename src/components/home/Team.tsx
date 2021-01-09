@@ -1,28 +1,28 @@
-import * as React from "react";
-import clsx from 'clsx';
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import AccountCircle from "@material-ui/icons/AccountCircle";
+import { IconDefinition } from "@fortawesome/fontawesome-common-types";
+import { faBattleNet, faPlaystation, faSteam, faXbox } from "@fortawesome/free-brands-svg-icons";
+import { faGamepad, faSkull } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Box } from "@material-ui/core";
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import Collapse from '@material-ui/core/Collapse';
 import amber from "@material-ui/core/colors/amber";
 import blueGrey from "@material-ui/core/colors/blueGrey";
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import CardActions from '@material-ui/core/CardActions';
-import Collapse from '@material-ui/core/Collapse';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import IWSTeam from "../../interfaces/IWSTeam";
-import MatchList from "./MatchList";
-import { Box } from "@material-ui/core";
-import EmojiEvents from "@material-ui/icons/EmojiEvents"
-import grey from "@material-ui/core/colors/grey";
 import brown from "@material-ui/core/colors/brown";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { IconDefinition } from "@fortawesome/fontawesome-common-types";
-import { faXbox, faPlaystation, faSteam, faBattleNet } from "@fortawesome/free-brands-svg-icons";
-import { faGamepad, faSkull } from "@fortawesome/free-solid-svg-icons";
+import grey from "@material-ui/core/colors/grey";
+import IconButton from '@material-ui/core/IconButton';
+import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import AccountCircle from "@material-ui/icons/AccountCircle";
+import EmojiEvents from "@material-ui/icons/EmojiEvents";
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import clsx from 'clsx';
+import * as React from "react";
 import IWSPlayer, { Platform } from "../../interfaces/IWSPlayer";
 import IWSRules from "../../interfaces/IWSRules";
+import IWSTeam from "../../interfaces/IWSTeam";
+import MatchList from "./MatchList";
 
 
 /**

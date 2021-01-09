@@ -10,10 +10,10 @@ export default class ApiService {
     public static async getPlayerDataFor(playerGameTag: string) {
         const endpointUrl = `${this.apiUrl}/playerdata?name=${playerGameTag}`;
         let result = await fetch(endpointUrl, {
-            method: 'GET',
+            method: "GET",
             headers: {
-                'Content-Type': 'application/json'
-            }
+                "Content-Type": "application/json",
+            },
         });
 
         return result;
@@ -26,10 +26,10 @@ export default class ApiService {
     public static async getMatchDataFor(playerGameTag: string) {
         const endpointUrl = `${this.apiUrl}/matchdataofplayer?name=${playerGameTag}`;
         let result = await fetch(endpointUrl, {
-            method: 'GET',
+            method: "GET",
             headers: {
-                'Content-Type': 'application/json'
-            }
+                "Content-Type": "application/json",
+            },
         });
 
         return result;
@@ -41,10 +41,10 @@ export default class ApiService {
     public static async getTournaments() {
         const endpointUrl = `${this.apiUrl}/tournament/all`;
         let result = await fetch(endpointUrl, {
-            method: 'GET',
+            method: "GET",
             headers: {
-                'Content-Type': 'application/json'
-            }
+                "Content-Type": "application/json",
+            },
         });
         return result;
     }
@@ -56,11 +56,11 @@ export default class ApiService {
     public static async newTournament(tournament: IWSTournament) {
         const endpointUrl = `${this.apiUrl}/tournament`;
         let result = await fetch(endpointUrl, {
-            method: 'POST',
+            method: "POST",
             headers: {
-                'Content-Type': 'application/json'
+                "Content-Type": "application/json",
             },
-            body: JSON.stringify(tournament)
+            body: JSON.stringify(tournament),
         });
         return result;
     }

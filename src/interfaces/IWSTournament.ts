@@ -1,5 +1,5 @@
-import IWSTeam from "./IWSTeam";
 import IWSRules from "./IWSRules";
+import IWSTeam from "./IWSTeam";
 
 export default interface IWSTournament {
     id: string;

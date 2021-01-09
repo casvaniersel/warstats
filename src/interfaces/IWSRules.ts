@@ -2,7 +2,7 @@ export enum RuleType {
     Kills,
     Placement,
     KillsAndPlacement,
-    Bracket
+    Bracket,
 }
 
 export default interface Rules {
@@ -12,4 +12,3 @@ export default interface Rules {
     pointsPerPlacement: any;
     numberOfBestGames: number;
 }
-

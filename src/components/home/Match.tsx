@@ -1,11 +1,11 @@
-import * as React from "react";
-import IWSMatchScore from "../../interfaces/IWSMatchScore";
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+import { faAward, faSkull } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Box from "@material-ui/core/Box";
 import Card from '@material-ui/core/Card';
 import { blueGrey } from "@material-ui/core/colors";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAward, faSkull } from "@fortawesome/free-solid-svg-icons";
+import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+import * as React from "react";
+import IWSMatchScore from "../../interfaces/IWSMatchScore";
 import IWSRules from "../../interfaces/IWSRules";
 
 interface IWSMatchProps {

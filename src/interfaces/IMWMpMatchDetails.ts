@@ -5,26 +5,26 @@ export interface IMWMpMatchDetails {
 
 export interface Match {
     utcStartSeconds: number;
-    utcEndSeconds:   number;
-    map:             string;
-    mode:            Mode;
-    matchID:         string;
-    duration:        number;
-    playlistName:    null;
-    version:         number;
-    gameType:        GameType;
-    result:          Result;
-    winningTeam:     Team;
-    gameBattle:      boolean;
-    team1Score:      number;
-    team2Score:      number;
-    isPresentAtEnd:  boolean;
-    player:          Player;
-    playerStats:     { [key: string]: number };
-    weaponStats:     WeaponStats;
-    allPlayers:      null;
-    arena:           boolean;
-    privateMatch:    boolean;
+    utcEndSeconds: number;
+    map: string;
+    mode: Mode;
+    matchID: string;
+    duration: number;
+    playlistName: null;
+    version: number;
+    gameType: GameType;
+    result: Result;
+    winningTeam: Team;
+    gameBattle: boolean;
+    team1Score: number;
+    team2Score: number;
+    isPresentAtEnd: boolean;
+    player: Player;
+    playerStats: { [key: string]: number };
+    weaponStats: WeaponStats;
+    allPlayers: null;
+    arena: boolean;
+    privateMatch: boolean;
 }
 
 export enum GameType {
@@ -36,46 +36,45 @@ export enum Mode {
 }
 
 export interface Player {
-    team:            Team;
-    rank:            number;
-    awards:          Awards;
-    nemesis:         string;
-    username:        Username;
-    uno:             string;
-    platform:        Platform;
+    team: Team;
+    rank: number;
+    awards: Awards;
+    nemesis: string;
+    username: Username;
+    uno: string;
+    platform: Platform;
     killstreakUsage: KillstreakUsage;
-    loadout:         Loadout[];
-    mostKilled?:     string;
-    clantag?:        string;
+    loadout: Loadout[];
+    mostKilled?: string;
+    clantag?: string;
 }
 
-export interface Awards {
-}
+export interface Awards {}
 
 export interface KillstreakUsage {
     uav?: number;
 }
 
 export interface Loadout {
-    primaryWeapon:   AryWeapon;
+    primaryWeapon: AryWeapon;
     secondaryWeapon: AryWeapon;
-    perks:           Perk[];
-    extraPerks:      Perk[];
-    killstreaks:     Killstreak[];
-    tactical:        Lethal;
-    lethal:          Lethal;
+    perks: Perk[];
+    extraPerks: Perk[];
+    killstreaks: Killstreak[];
+    tactical: Lethal;
+    lethal: Lethal;
 }
 
 export interface Perk {
-    name:             string;
-    label:            null | string;
-    image:            null;
-    imageMainUi:      null | string;
+    name: string;
+    label: null | string;
+    image: null;
+    imageMainUi: null | string;
     imageProgression: null | string;
 }
 
 export interface Killstreak {
-    name:  KillstreakName;
+    name: KillstreakName;
     label: KillstreakLabel | null;
 }
 
@@ -93,10 +92,10 @@ export enum KillstreakName {
 }
 
 export interface Lethal {
-    name:             LethalName;
-    label:            LethalLabel;
-    image:            Image;
-    imageLarge:       ImageLarge;
+    name: LethalName;
+    label: LethalLabel;
+    image: Image;
+    imageLarge: ImageLarge;
     progressionImage: ProgressionImage;
 }
 
@@ -146,18 +145,18 @@ export enum ProgressionImage {
 }
 
 export interface AryWeapon {
-    name:        PrimaryWeaponName;
-    label:       PrimaryWeaponLabel;
-    imageLoot:   ImageLoot;
-    imageIcon:   ImageIcon;
-    variant:     string;
+    name: PrimaryWeaponName;
+    label: PrimaryWeaponLabel;
+    imageLoot: ImageLoot;
+    imageIcon: ImageIcon;
+    variant: string;
     attachments: Attachment[];
 }
 
 export interface Attachment {
-    name:     AttachmentName;
-    label:    null;
-    image:    null;
+    name: AttachmentName;
+    label: null;
+    image: null;
     category: null;
 }
 
@@ -227,25 +226,25 @@ export enum Result {
 
 export interface WeaponStats {
     iw8_sm_mpapa5?: C4MpP;
-    iw8_knife?:     C4MpP;
-    semtex_mp?:     C4MpP;
-    none?:          C4MpP;
-    iw8_ar_mike4?:  C4MpP;
-    c4_mp_p?:       C4MpP;
+    iw8_knife?: C4MpP;
+    semtex_mp?: C4MpP;
+    none?: C4MpP;
+    iw8_ar_mike4?: C4MpP;
+    c4_mp_p?: C4MpP;
 }
 
 export interface C4MpP {
-    hits:             number;
-    kills:            number;
-    headshots:        number;
-    loadoutIndex:     number;
-    shots:            number;
+    hits: number;
+    kills: number;
+    headshots: number;
+    loadoutIndex: number;
+    shots: number;
     startingWeaponXp: number;
-    deaths:           number;
-    xpEarned:         number;
+    deaths: number;
+    xpEarned: number;
 }
 
 export interface Summary {
-    all:  { [key: string]: number };
+    all: { [key: string]: number };
     koth: { [key: string]: number };
 }

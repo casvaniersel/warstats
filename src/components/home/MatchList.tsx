@@ -1,14 +1,14 @@
-import * as React from "react";
-import IWSScore from "../../interfaces/IWSTeamScore";
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import Box from "@material-ui/core/Box";
-import amber from "@material-ui/core/colors/amber";
-import IWSMatch from "./Match";
-import grey from "@material-ui/core/colors/grey";
-import brown from "@material-ui/core/colors/brown";
 import { blueGrey } from "@material-ui/core/colors";
+import amber from "@material-ui/core/colors/amber";
+import brown from "@material-ui/core/colors/brown";
+import grey from "@material-ui/core/colors/grey";
+import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+import * as React from "react";
 import IWSMatchScore from "../../interfaces/IWSMatchScore";
 import IWSRules from "../../interfaces/IWSRules";
+import IWSScore from "../../interfaces/IWSTeamScore";
+import IWSMatch from "./Match";
 
 interface IWSMatchProps {
     scores: IWSScore;
@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         overflowY: "hidden",
         scrollSnapType: "x mandatory",
         scrollPadding: "50%"
-    }
+    } 
 }));
 
 export default function Match({ scores, rules }: IWSMatchProps) {
