@@ -146,8 +146,7 @@ class ClashForm extends React.PureComponent<
                     value={this.state.numberOfTeams}
                     onChange={this.handleNoTeamsChange}
                     helperText="How many teams are clashing?"
-                    color="secondary"
-                >
+                    color="secondary">
                     {this.possibleAmountOfTeams.map((amount) => (
                         <MenuItem key={amount} value={amount}>
                             {amount}

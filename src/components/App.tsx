@@ -1,15 +1,19 @@
+import amber from "@material-ui/core/colors/amber";
+import blueGrey from "@material-ui/core/colors/blueGrey";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import {
+    createMuiTheme,
+    createStyles,
+    makeStyles,
+    Theme,
+    ThemeOptions,
+} from "@material-ui/core/styles";
+import { ThemeProvider } from "@material-ui/styles";
 import * as React from "react";
 import { BrowserRouter, Route } from "react-router-dom";
-import Header from "./shared/Header";
 import WSHome from "./home/Home";
 import WSNew from "./new/New";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import blueGrey from "@material-ui/core/colors/blueGrey";
-import amber from "@material-ui/core/colors/amber";
-import pink from "@material-ui/core/colors/pink";
-import { createMuiTheme, Theme, ThemeOptions } from "@material-ui/core/styles";
-import { ThemeProvider } from "@material-ui/styles";
-import { makeStyles, createStyles } from "@material-ui/core/styles";
+import Header from "./shared/Header";
 
 const theme: ThemeOptions = createMuiTheme({
     palette: {
@@ -48,7 +52,7 @@ class App extends React.PureComponent<{ classes }, {}> {
                     <CssBaseline />
                     <div className={this.props.classes.root}>
                         <Header />
-                        <Route exact path="/" component={() => <WSNew />} />
+                        <Route exact path="/" component={() => <WSHome />} />
                         <Route path="/new" component={() => <WSNew />} />
                     </div>
                 </ThemeProvider>

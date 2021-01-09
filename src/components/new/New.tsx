@@ -1,12 +1,17 @@
+import AppBar from "@material-ui/core/AppBar";
 import blueGrey from "@material-ui/core/colors/blueGrey";
 import Fab from "@material-ui/core/Fab";
+import IconButton from "@material-ui/core/IconButton";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
+import Toolbar from "@material-ui/core/Toolbar";
+import { ArrowBack } from "@material-ui/icons";
 import SaveIcon from "@material-ui/icons/Save";
 import * as React from "react";
+import { useCallback } from "react";
+import { Link, useHistory } from "react-router-dom";
 import IWSRules from "../../interfaces/IWSRules";
 import IWSTeam from "../../interfaces/IWSTeam";
 import IWSTournament from "../../interfaces/IWSTournament";
-import ApiService from "../../services/ApiService";
 import WSClashForm from "./ClashForm";
 
 export default function WSNew() {
@@ -23,7 +28,7 @@ export default function WSNew() {
             form: {
                 color: "white",
                 flex: "1 0 auto",
-                padding: "20px",
+                padding: "10px",
                 textAlign: "center",
             },
             savePanel: {
@@ -40,14 +45,25 @@ export default function WSNew() {
                 position: "relative",
                 top: "-26px",
             },
+            menuButton: {
+                color: "white",
+            },
         }),
     );
     const classes = useStyles();
-    return <New classes={classes} />;
+
+    const history = useHistory();
+    const handleOnSave = useCallback(() => {
+        history.push("/new");
+        window.location.href = "/";
+    }, [history]);
+
+    return <New classes={classes} handleOnSave={handleOnSave} />;
 }
 
 interface INewProps {
     classes: any;
+    handleOnSave: any;
 }
 
 class NewState implements IWSTournament {
@@ -97,14 +113,27 @@ class New extends React.PureComponent<INewProps, NewState> {
     }
 
     private handleSave() {
-        ApiService.newTournament(this.state);
+        //ApiService.newTournament(this.state);
+        console.log("Save to API");
+        this.props.handleOnSave();
     }
 
     render() {
         return (
             <div className={this.props.classes.root}>
+                <AppBar position="sticky" color="secondary">
+                    <Toolbar>
+                        <Link to="/">
+                            <IconButton
+                                edge="start"
+                                className={this.props.classes.menuButton}
+                                aria-label="menu">
+                                <ArrowBack />
+                            </IconButton>
+                        </Link>
+                    </Toolbar>
+                </AppBar>
                 <div className={this.props.classes.form}>
-                    <h1>Prepare to CLASH</h1>
                     <WSClashForm onChange={this.handleFormChange} />
                 </div>
                 <div className={this.props.classes.savePanel}>
@@ -112,8 +141,7 @@ class New extends React.PureComponent<INewProps, NewState> {
                         color="primary"
                         aria-label="add"
                         className={this.props.classes.saveIcon}
-                        onClick={this.handleSave}
-                    >
+                        onClick={this.handleSave}>
                         <SaveIcon />
                     </Fab>
                 </div>
