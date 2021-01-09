@@ -46,14 +46,12 @@ class Header extends React.PureComponent<IHeaderProps, {}> {
                         edge="start"
                         className={this.props.classes.menuButton}
                         color="inherit"
-                        aria-label="menu"
-                    >
+                        aria-label="menu">
                         <Timeline />
                     </IconButton>
                     <Typography
                         variant="h6"
-                        className={this.props.classes.title}
-                    >
+                        className={this.props.classes.title}>
                         Warstats
                     </Typography>
                     <IconButton
@@ -61,8 +59,7 @@ class Header extends React.PureComponent<IHeaderProps, {}> {
                         aria-controls="menu-appbar"
                         aria-haspopup="true"
                         /* onClick={} */
-                        color="inherit"
-                    >
+                        color="inherit">
                         <AccountCircle />
                     </IconButton>
                 </Toolbar>
