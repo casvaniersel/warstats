@@ -5,21 +5,21 @@ export interface IMWWzMatchDetails {
 
 export interface Match {
     utcStartSeconds: number;
-    utcEndSeconds:   number;
-    map:             Map;
-    mode:            Mode;
-    matchID:         string;
-    duration:        number;
-    playlistName:    null;
-    version:         number;
-    gameType:        GameType;
-    playerCount:     number;
-    playerStats:     { [key: string]: number };
-    player:          Player;
-    teamCount:       number;
-    rankedTeams:     null;
-    draw:            boolean;
-    privateMatch:    boolean;
+    utcEndSeconds: number;
+    map: Map;
+    mode: Mode;
+    matchID: string;
+    duration: number;
+    playlistName: null;
+    version: number;
+    gameType: GameType;
+    playerCount: number;
+    playerStats: { [key: string]: number };
+    player: Player;
+    teamCount: number;
+    rankedTeams: null;
+    draw: boolean;
+    privateMatch: boolean;
 }
 
 export enum GameType {
@@ -38,35 +38,34 @@ export enum Mode {
 }
 
 export interface Player {
-    team:            string;
-    rank:            number;
-    awards:          Awards;
-    username:        Username;
-    uno:             string;
-    clantag:         Clantag;
+    team: string;
+    rank: number;
+    awards: Awards;
+    username: Username;
+    uno: string;
+    clantag: Clantag;
     brMissionStats?: BrMissionStats;
-    loadout:         Loadout[];
+    loadout: Loadout[];
 }
 
-export interface Awards {
-}
+export interface Awards {}
 
 export interface BrMissionStats {
-    missionsComplete:           number;
-    totalMissionXpEarned:       number;
+    missionsComplete: number;
+    totalMissionXpEarned: number;
     totalMissionWeaponXpEarned: number;
-    missionStatsByType:         MissionStatsByType;
+    missionStatsByType: MissionStatsByType;
 }
 
 export interface MissionStatsByType {
     assassination?: Ination;
-    domination?:    Ination;
+    domination?: Ination;
 }
 
 export interface Ination {
     weaponXp: number;
-    xp:       number;
-    count:    number;
+    xp: number;
+    count: number;
 }
 
 export enum Clantag {
@@ -74,20 +73,20 @@ export enum Clantag {
 }
 
 export interface Loadout {
-    primaryWeapon:   AryWeapon;
+    primaryWeapon: AryWeapon;
     secondaryWeapon: AryWeapon;
-    perks:           Perk[];
-    extraPerks:      Perk[];
-    killstreaks:     Killstreak[];
-    tactical:        Lethal;
-    lethal:          Lethal;
+    perks: Perk[];
+    extraPerks: Perk[];
+    killstreaks: Killstreak[];
+    tactical: Lethal;
+    lethal: Lethal;
 }
 
 export interface Perk {
-    name:             ExtraPerkName;
-    label:            null;
-    image:            null;
-    imageMainUi:      null;
+    name: ExtraPerkName;
+    label: null;
+    image: null;
+    imageMainUi: null;
     imageProgression: null;
 }
 
@@ -104,7 +103,7 @@ export enum ExtraPerkName {
 }
 
 export interface Killstreak {
-    name:  KillstreakName;
+    name: KillstreakName;
     label: null;
 }
 
@@ -116,26 +115,26 @@ export enum KillstreakName {
 }
 
 export interface Lethal {
-    name:             string;
-    label:            null;
-    image:            null;
-    imageLarge:       null;
+    name: string;
+    label: null;
+    image: null;
+    imageLarge: null;
     progressionImage: null;
 }
 
 export interface AryWeapon {
-    name:        string;
-    label:       null;
-    imageLoot:   null;
-    imageIcon:   null;
-    variant:     string;
+    name: string;
+    label: null;
+    imageLoot: null;
+    imageIcon: null;
+    variant: string;
     attachments: Attachment[];
 }
 
 export interface Attachment {
-    name:     string;
-    label:    null;
-    image:    null;
+    name: string;
+    label: null;
+    image: null;
     category: null;
 }
 
@@ -144,9 +143,9 @@ export enum Username {
 }
 
 export interface Summary {
-    all:                       { [key: string]: number };
-    br_brtrios:                { [key: string]: number };
-    br_brquads:                { [key: string]: number };
-    br_brduos:                 { [key: string]: number };
+    all: { [key: string]: number };
+    br_brtrios: { [key: string]: number };
+    br_brquads: { [key: string]: number };
+    br_brduos: { [key: string]: number };
     br_kingslayer_kingsltrios: { [key: string]: number };
 }

@@ -4,30 +4,29 @@ export interface IMWWeeklyStats {
 }
 
 export interface Mp {
-    all:  All;
+    all: All;
     mode: MpMode;
-    map:  Map;
+    map: Map;
 }
 
 export interface All {
     properties: { [key: string]: number };
 }
 
-export interface Map {
-}
+export interface Map {}
 
 export interface MpMode {
     koth: All;
 }
 
 export interface Wz {
-    all:  All;
+    all: All;
     mode: WzMode;
-    map:  Map;
+    map: Map;
 }
 
 export interface WzMode {
-    br_all:     All;
+    br_all: All;
     br_brquads: All;
-    br_brduos:  All;
+    br_brduos: All;
 }

@@ -1,12 +1,12 @@
-import * as React from "react";
-import ApiService from "../../services/ApiService";
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import IWSTournament from "../../interfaces/IWSTournament";
-import WSTournament from "./Tournament";
 import blueGrey from "@material-ui/core/colors/blueGrey";
 import Fab from "@material-ui/core/Fab";
+import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import AddIcon from "@material-ui/icons/Add";
+import * as React from "react";
 import { Link } from "react-router-dom";
+import IWSTournament from "../../interfaces/IWSTournament";
+import ApiService from "../../services/ApiService";
+import WSTournament from "./Tournament";
 const testdata = require("./TESTDATA.json");
 
 export default function WSHome() {

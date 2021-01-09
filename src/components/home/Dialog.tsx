@@ -1,16 +1,10 @@
-import * as React from "react";
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import IconButton from '@material-ui/core/IconButton';
-import CloseIcon from '@material-ui/icons/Close';
-import Dialog from '@material-ui/core/Dialog';
-import MuiDialogTitle from '@material-ui/core/DialogTitle';
-import MuiDialogContent from '@material-ui/core/DialogContent';
-import MuiDialogActions from '@material-ui/core/DialogActions';
-import blueGrey from "@material-ui/core/colors/blueGrey";
-import Box from "@material-ui/core/Box";
-import { IconDefinition } from "@fortawesome/fontawesome-common-types";
-import { faAward, faSkull, faBomb } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import blueGrey from "@material-ui/core/colors/blueGrey";
+import Dialog from '@material-ui/core/Dialog';
+import MuiDialogContent from '@material-ui/core/DialogContent';
+import MuiDialogTitle from '@material-ui/core/DialogTitle';
+import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+import * as React from "react";
 import { RuleType } from "../../interfaces/IWSRules";
 
 /**

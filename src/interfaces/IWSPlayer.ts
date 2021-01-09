@@ -9,5 +9,5 @@ export enum Platform {
     psn = "psn",
     steam = "steam",
     acti = "acti",
-    uno = "uno"
+    uno = "uno",
 }

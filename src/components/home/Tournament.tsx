@@ -1,17 +1,17 @@
-import * as React from "react";
-import { useState } from "react";
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import IWSTournament from "../../interfaces/IWSTournament";
-import Grid from "@material-ui/core/Grid";
-import Team from "./Team";
+import { IconDefinition } from "@fortawesome/fontawesome-common-types";
+import { faAward, faBomb, faSkull } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import blueGrey from "@material-ui/core/colors/blueGrey";
+import Grid from "@material-ui/core/Grid";
+import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+import * as React from "react";
+import { useState } from "react";
 import { RuleType } from "../../interfaces/IWSRules";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { IconDefinition } from "@fortawesome/fontawesome-common-types";
-import { faAward, faSkull, faBomb } from "@fortawesome/free-solid-svg-icons";
+import IWSTournament from "../../interfaces/IWSTournament";
 import WSDialog from "./Dialog";
+import Team from "./Team";
 
 
 /**
