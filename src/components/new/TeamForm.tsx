@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme: Theme) =>
         gamerTagPlatform: {
             display: "flex",
             flexDirection: "row",
-            justifyItems: "center",
+            alignItems: "center",
         },
     }),
 );
