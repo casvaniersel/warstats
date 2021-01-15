@@ -139,16 +139,19 @@ export default function WSTeam({ team, rules }: ITeamProps) {
     };
 
     const getRankClass = () => {
-        switch (team.score.rank) {
-            case 1:
-                return classes.rankIconFirst;
-            case 2:
-                return classes.rankIconSecond;
-            case 3:
-                return classes.rankIconThird;
-            default:
-                return null;
+        if (team.score) {
+            switch (team.score.rank) {
+                case 1:
+                    return classes.rankIconFirst;
+                case 2:
+                    return classes.rankIconSecond;
+                case 3:
+                    return classes.rankIconThird;
+                default:
+                    return null;
+            }
         }
+        return classes.rankIconFirst;
     };
 
     const getPlatformIcon = (player: IWSPlayer): IconDefinition => {
@@ -170,17 +173,19 @@ export default function WSTeam({ team, rules }: ITeamProps) {
 
     const getPlayerKills = (player: IWSPlayer) => {
         let killCounter = 0;
-        const countedMatches = team.score.matches.filter(
-            (match) => match.countsForTotal,
-        );
-        countedMatches.forEach((match) => {
-            const scoredByPlayer = match.playerScores.filter(
-                (score) => score.player.gamerTag === player.gamerTag,
+        if (team.score) {
+            const countedMatches = team.score.matches.filter(
+                (match) => match.countsForTotal,
             );
-            scoredByPlayer.forEach(
-                (playerScore) => (killCounter += playerScore.kills),
-            );
-        });
+            countedMatches.forEach((match) => {
+                const scoredByPlayer = match.playerScores.filter(
+                    (score) => score.player.gamerTag === player.gamerTag,
+                );
+                scoredByPlayer.forEach(
+                    (playerScore) => (killCounter += playerScore.kills),
+                );
+            });
+        }
         return killCounter;
     };
 
@@ -188,7 +193,7 @@ export default function WSTeam({ team, rules }: ITeamProps) {
         <Card className={classes.root}>
             <Box component="div" className={classes.ranking}>
                 <div className={classes.rankHeader}>
-                    {team.score.rank > 3 ? (
+                    {team.score && team.score.rank > 3 ? (
                         <div className={classes.rankHeaderCircle}>
                             {team.score.rank}
                         </div>
@@ -199,14 +204,18 @@ export default function WSTeam({ team, rules }: ITeamProps) {
                                 className={getRankClass()}
                             />
                             <span className={getRankClass()}>
-                                {team.score.rank}
+                                {team.score ? team.score.rank : 1}
                             </span>
                         </div>
                     )}
                 </div>
                 <div className={classes.rankHeaderPoints}>
-                    {team.score.points}{" "}
-                    {team.score.points > 1 ? "points" : "point"}
+                    {team.score ? team.score.points : 0}{" "}
+                    {team.score
+                        ? team.score.points > 1
+                            ? "points"
+                            : "point"
+                        : "points"}
                 </div>
             </Box>
             <Box component="div" className={classes.cardHeader}>
