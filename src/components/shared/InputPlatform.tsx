@@ -46,11 +46,9 @@ export default function InputPlatform({ memberId, onChange }) {
         <TextField
             id={`standard-select-numberofteams-${memberId}`}
             select
-            label="Platform"
             value={platform}
             onChange={handleChange}
-            color="secondary"
-        >
+            color="secondary">
             {platforms.map((platform) => (
                 <MenuItem key={platform.value} value={platform.value}>
                     <div className={classes.platformValue}>

@@ -12,6 +12,7 @@ import { Link, useHistory } from "react-router-dom";
 import IWSRules from "../../interfaces/IWSRules";
 import IWSTeam from "../../interfaces/IWSTeam";
 import IWSTournament from "../../interfaces/IWSTournament";
+import ApiService from "../../services/ApiService";
 import WSClashForm from "./ClashForm";
 
 export default function WSNew() {
@@ -113,8 +114,9 @@ class New extends React.PureComponent<INewProps, NewState> {
     }
 
     private handleSave() {
-        //ApiService.newTournament(this.state);
+        ApiService.newTournament(this.state);
         console.log("Save to API");
+        console.log(this.state);
         this.props.handleOnSave();
     }
 
