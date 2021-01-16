@@ -14,6 +14,7 @@ import { BrowserRouter, Route } from "react-router-dom";
 import WSHome from "./home/Home";
 import WSNew from "./new/New";
 import Header from "./shared/Header";
+import WSTeamBuilder from "./teambuilder/TeamBuilder";
 
 const theme: ThemeOptions = createMuiTheme({
     palette: {
@@ -54,6 +55,10 @@ class App extends React.PureComponent<{ classes }, {}> {
                         <Header />
                         <Route exact path="/" component={() => <WSHome />} />
                         <Route path="/new" component={() => <WSNew />} />
+                        <Route
+                            path="/teambuilder"
+                            component={() => <WSTeamBuilder />}
+                        />
                     </div>
                 </ThemeProvider>
             </BrowserRouter>

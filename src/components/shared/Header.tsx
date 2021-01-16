@@ -4,8 +4,10 @@ import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import AccountCircle from "@material-ui/icons/AccountCircle";
+import BuildIcon from "@material-ui/icons/Build";
 import Timeline from "@material-ui/icons/Timeline";
 import * as React from "react";
+import { Link } from "react-router-dom";
 
 export default function WSHeader() {
     /**
@@ -21,6 +23,9 @@ export default function WSHeader() {
             },
             title: {
                 flexGrow: 1,
+            },
+            teamBuilderIcon: {
+                fontSize: "1.2rem",
             },
         }),
     );
@@ -54,6 +59,17 @@ class Header extends React.PureComponent<IHeaderProps, {}> {
                         className={this.props.classes.title}>
                         Warstats
                     </Typography>
+                    <Link to="/teambuilder">
+                        <IconButton
+                            aria-label="account of current user"
+                            aria-controls="menu-appbar"
+                            aria-haspopup="true"
+                            color="secondary">
+                            <BuildIcon
+                                className={this.props.classes.teamBuilderIcon}
+                            />
+                        </IconButton>
+                    </Link>
                     <IconButton
                         aria-label="account of current user"
                         aria-controls="menu-appbar"
