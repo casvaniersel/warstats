@@ -88,7 +88,7 @@ export default function Match({ scores, rules }: IWSMatchProps) {
 
     return (
         <Box component="div" className={`${classes.root} ${getRankClass()}`}>
-            {scores ? (
+            {scores && scores.matches.length > 0 ? (
                 <div className={classes.scrollRow}>
                     {scores.matches.sort(sortMatches).map((match, i) => (
                         <IWSMatch match={match} rules={rules} key={i} />
